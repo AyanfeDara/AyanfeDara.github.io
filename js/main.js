@@ -101,6 +101,14 @@
   /* ---------- project loops: play only while on screen, never with reduced motion ---------- */
   // The cards stack, so a covered card still counts as on screen. Only the topmost visible one plays.
   var loops = [].slice.call(document.querySelectorAll('video.loop'));
+  // Phones get the portrait cut (<name>_m.*) with larger type. Videos don't preload, so this runs before any download.
+  if (window.matchMedia && window.matchMedia('(max-width: 640px)').matches) {
+    loops.forEach(function (v) {
+      v.poster = v.getAttribute('poster').replace('_poster', '_m_poster');
+      v.querySelectorAll('source').forEach(function (s) { s.src = s.getAttribute('src').replace(/(\.\w+)$/, '_m$1'); });
+      v.setAttribute('width', '1080'); v.setAttribute('height', '1350');
+    });
+  }
   if (loops.length && !reduceMotion) {
     var pending = false;
     var pickActive = function () {
