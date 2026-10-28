@@ -342,6 +342,8 @@ h1, h2, h3, p { margin: 0; }
 .big-num { font-weight: 700; font-size: 72px; line-height: 1; letter-spacing: -.06em; color: var(--num); }
 .big-label { max-width: 200px; font-size: 15px; line-height: 1.45; color: var(--muted-strong); }
 .card-body { color: var(--muted); text-wrap: pretty; }
+.takeaway { padding-left: 16px; border-left: 3px solid var(--num); color: var(--text); font-size: 16px; line-height: 1.5; text-wrap: pretty; }
+.takeaway span { display: block; margin-bottom: 4px; font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--num); }
 .shot {
   margin: 0; background: #FFFFFF; padding: 12px; border-radius: 20px;
   box-shadow: var(--shadow-md); transform: rotate(var(--tilt, 0deg));

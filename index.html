@@ -10,7 +10,10 @@
 <meta property="og:title" content="Olorunmaiye Peter | Data Analyst">
 <meta property="og:description" content="I turn messy data into decisions people act on. SQL, Python and Power BI projects in e-commerce, energy and telecom.">
 <meta property="og:url" content="https://ayanfedara.github.io/">
-<meta property="og:image" content="https://ayanfedara.github.io/images/peter.jpeg">
+<meta property="og:image" content="https://ayanfedara.github.io/images/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Olorunmaiye Peter, data analyst: I turn messy data into decisions people act on.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <script>
@@ -145,29 +148,30 @@
 </section>
 
 <section class="stats wrap" aria-label="By the numbers">
-  <div class="stat reveal"><span class="stat-num" data-count="99441">99,441</span><span class="stat-label">orders analysed in PostgreSQL</span></div>
-  <div class="stat reveal"><span class="stat-num" data-count="7043">7,043</span><span class="stat-label">telecom customers ranked by churn risk</span></div>
-  <div class="stat reveal"><span class="stat-num" data-count="54">54</span><span class="stat-label">African countries modelled in Power BI</span></div>
-  <div class="stat reveal"><span class="stat-num accent-text" data-count="0.85" data-decimals="2">0.85</span><span class="stat-label">ROC AUC on unseen data, churn model</span></div>
+  <div class="stat reveal"><span class="stat-num" data-count="99441">99,441</span><span class="stat-label">online store orders analysed in SQL</span></div>
+  <div class="stat reveal"><span class="stat-num" data-count="7043">7,043</span><span class="stat-label">telecom customers studied to predict who leaves</span></div>
+  <div class="stat reveal"><span class="stat-num" data-count="54">54</span><span class="stat-label">African countries compared in a Power BI report</span></div>
+  <div class="stat reveal"><span class="stat-num accent-text" data-count="0.85" data-decimals="2">0.85</span><span class="stat-label">churn model score on customers it had never seen (1.0 is perfect, 0.5 is a coin flip)</span></div>
 </section>
 
 <section id="work" class="section wrap">
   <div class="section-head reveal">
     <h2 class="section-title"><span class="idx">(01)</span><span>Selected <span class="serif accent-text">work</span></span></h2>
-    <p class="section-note">Every project starts with a business question and ends with something a manager can act on on Monday.</p>
+    <p class="section-note">Each project starts with a real business question and ends with what I would do about the answer.</p>
   </div>
 
   <div class="cards">
     <article class="card card-1">
       <div class="card-text">
         <p class="meta"><span class="meta-n">01</span><span aria-hidden="true">—</span><span>SQL · E-commerce · 2026</span></p>
-        <h3 class="card-title">Late deliveries drive <span class="serif">1-star</span> reviews</h3>
+        <h3 class="card-title">Late orders get <span class="serif">1&#8209;star</span> reviews</h3>
         <div class="big-stat"><span class="big-num">70%</span><span class="big-label">of orders over a week late got a 1-star review</span></div>
-        <p class="card-body">I queried 99,441 orders across 9 linked tables with CTEs and window functions. Late orders were only 6.7% of deliveries but caused 37% of all 1-star reviews, and the North-east ran 14–21% late against 4.5% in São Paulo.</p>
+        <p class="card-body">Using SQL on 99,441 orders from a Brazilian online store, I compared each delivery date with the customer’s review. Late orders were only 6.7% of deliveries but accounted for 37% of all 1-star reviews. The five worst states, all in the North-east, ran 14 to 21% late, against 4.5% in São Paulo.</p>
+        <p class="takeaway"><span>What I’d do</span>Fix carriers and delivery estimates in those five states first, and flag orders that are at risk of running late before the customer notices.</p>
         <a href="https://github.com/AyanfeDara/olist-sales-analysis" class="btn btn-outline btn-sm">View on GitHub <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
       </div>
       <figure class="shot" style="--tilt: -2deg">
-        <video class="loop" muted loop playsinline preload="none" width="1280" height="800" poster="media/olist_poster.webp" aria-label="Animation: Peter's SQL query buckets orders by delivery delay, then bars show the share of 1-star reviews rising from 6.4% for orders more than 7 days early to 69.7% for orders more than 7 days late">
+        <video class="loop" muted loop playsinline preload="none" width="1280" height="800" poster="media/olist_poster.webp" aria-label="Animation: a SQL query result, then bars showing the share of 1-star reviews rising from 6.4% for orders over a week early to 69.7% for orders over a week late">
           <source src="media/olist.mp4" type="video/mp4"><source src="media/olist.webm" type="video/webm">
         </video>
       </figure>
@@ -176,9 +180,10 @@
     <article class="card card-2">
       <div class="card-text">
         <p class="meta"><span class="meta-n">02</span><span aria-hidden="true">—</span><span>Power BI · Energy · 2026</span></p>
-        <h3 class="card-title">Africa doubled its electricity, but <span class="serif">not per person</span></h3>
-        <div class="big-stat"><span class="big-num">+20%</span><span class="big-label">power per person, while generation grew 119%</span></div>
-        <p class="card-body">A three-page Power BI report on 54 countries, 2000–2024, modelled as a star schema. Population grew 83%, so supply per person only went from 534 to 639 kWh. Nigeria came lowest among its peers, and its renewable share fell from 38% to 25%.</p>
+        <h3 class="card-title">Africa doubled its electricity supply, but <span class="serif">not per person</span></h3>
+        <div class="big-stat"><span class="big-num">+20%</span><span class="big-label">electricity per person, while total generation grew 119%</span></div>
+        <p class="card-body">I built a three-page Power BI report on 54 African countries from 2000 to 2024. Population grew 83%, so each person’s share only rose from 534 to 639 kWh a year. Of seven large economies, Nigeria has the least electricity per person, and its share from renewables fell from 38% to 25%.</p>
+        <p class="takeaway"><span>What it means</span>Total output is the wrong yardstick. Measured per person, Nigeria comes last of the seven, and Ethiopia has overtaken it.</p>
         <a href="https://github.com/AyanfeDara/africa-electricity-dashboard" class="btn btn-outline btn-sm">View on GitHub <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
       </div>
       <figure class="shot" style="--tilt: 2deg">
@@ -191,9 +196,10 @@
     <article class="card card-3">
       <div class="card-text">
         <p class="meta"><span class="meta-n">03</span><span aria-hidden="true">—</span><span>Python · Telecom · 2026</span></p>
-        <h3 class="card-title">Find half of all leavers by calling <span class="serif">one in five</span></h3>
-        <div class="big-stat"><span class="big-num">50%</span><span class="big-label">of leavers reached by contacting the riskiest 20%</span></div>
-        <p class="card-body">7,043 telecom customers. Month-to-month customers churn 15 times as often as two-year ones (42.7% against 2.8%). My logistic regression and random forest (ROC AUC 0.85) rank who to call first, covering 55% of revenue at risk.</p>
+        <h3 class="card-title">Call <span class="serif">one in five</span> customers, reach half of those about to leave</h3>
+        <div class="big-stat"><span class="big-num">50%</span><span class="big-label">of leaving customers reached by calling the riskiest 20%</span></div>
+        <p class="card-body">I studied 7,043 telecom customers in Python. Those on month-to-month plans leave 15 times as often as those on two-year contracts (42.7% against 2.8%). I compared two models and used the simpler one, a logistic regression (score 0.85), to rank who to call first. The riskiest 20% hold half of the customers who leave and 55% of the revenue at risk.</p>
+        <p class="takeaway"><span>What I’d do</span>Score customers every month, offer the riskiest 20% a longer contract, and test the offer on a small group before rolling it out.</p>
         <a href="https://github.com/AyanfeDara/telco-churn-analysis" class="btn btn-outline btn-sm">View on GitHub <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
       </div>
       <figure class="shot" style="--tilt: -1.5deg">
@@ -209,7 +215,7 @@
   <h2 class="section-title reveal"><span class="idx">(02)</span><span>A bit <span class="serif accent-text">about me</span></span></h2>
   <div class="bento reveal">
     <div class="tile tile-photo">
-      <img src="images/peter.jpeg" alt="Peter in Abuja" width="560" height="1280" loading="lazy">
+      <img src="images/peter.jpeg" alt="" width="560" height="1280" loading="lazy">
       <div class="photo-fade"></div>
       <div class="photo-caption">
         <span class="photo-name">Olorunmaiye <span class="serif">Peter</span></span>
@@ -220,19 +226,19 @@
     <div class="tile tile-wide">
       <span class="label">The short version</span>
       <p class="tile-lead">Physicist turned <span class="serif accent-text">data analyst</span>. I like the moment a messy table finally gives a straight answer.</p>
-      <p class="tile-body">Before analytics I worked on solar energy audits and traffic-light control systems in Abuja, and watched live signals at the FCTA traffic centre. Now I bring that same hands-on curiosity to data.</p>
+      <p class="tile-body">Before analytics I did solar energy audits and helped program traffic-light controllers in Abuja, and monitored live traffic signals at the city’s traffic management centre. Now I bring that same hands-on curiosity to data.</p>
     </div>
 
     <div class="tile">
       <span class="label"><span class="dot dot-live"></span>Local time</span>
       <span class="tile-num mono" data-clock>--:--</span>
-      <span class="tile-body">Abuja · UTC+1 · same hours as much of Europe</span>
+      <span class="tile-body">Abuja · UTC+1 · my working day overlaps with UK and European hours</span>
     </div>
 
     <div class="tile">
       <span class="label">Master’s, 2026</span>
       <span class="tile-num accent-text">29/30</span>
-      <span class="tile-body">Data Science Management, Rome Business School. Capstone 30/30.</span>
+      <span class="tile-body">Average grade in my Master in Data Science Management, Rome Business School. On the Italian scale 30 is the top mark; my capstone scored 30/30.</span>
     </div>
 
     <div class="tile tile-wide tile-drone">
@@ -243,7 +249,7 @@
       </svg>
       <div class="drone-copy">
         <p class="tile-lead">I built a drone that <span class="serif">logs the weather</span>.</p>
-        <p class="tile-body">A BMP180 sensor on a quadcopter, streaming temperature and pressure through an ESP8266 to a live web view. Project of the Year, University of Ilorin.</p>
+        <p class="tile-body">For my physics degree I put a temperature and pressure sensor on a quadcopter and streamed the readings to a live web page. The physics students’ association at the University of Ilorin named it Project of the Year.</p>
       </div>
     </div>
 
@@ -258,12 +264,12 @@
 <section id="path" class="section wrap">
   <h2 class="section-title reveal"><span class="idx">(03)</span><span>The <span class="serif accent-text">path</span> so far</span></h2>
   <ol class="path reveal">
-    <li class="row"><span class="row-year">2025–26</span><span class="row-main"><strong>Master in Data Science Management</strong><span>Rome Business School · average 29/30, capstone 30/30</span></span><svg class="arr" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></li>
-    <li class="row"><span class="row-year">2022</span><span class="row-main"><strong>Treasurer, NYSC NEMA Community Development Group</strong><span>Bayelsa State · disaster-preparedness sessions reaching 1,000+ people</span></span><svg class="arr" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></li>
-    <li class="row"><span class="row-year">2021</span><span class="row-main"><strong>BSc Physics</strong><span>University of Ilorin · Project of the Year and Writer of the Year, NAPS</span></span><svg class="arr" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></li>
-    <li class="row"><span class="row-year">2020–21</span><span class="row-main"><strong>Technical Support Intern, Urban Motions</strong><span>Abuja · solar energy audits, embedded traffic-light control</span></span><svg class="arr" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></li>
-    <li class="row"><span class="row-year">2019–21</span><span class="row-main"><strong>Undergraduate Tutor, University of Ilorin</strong><span>Taught physics and MATLAB to 50+ final-year students</span></span><svg class="arr" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></li>
-    <li class="row"><span class="row-year">2019</span><span class="row-main"><strong>Student Intern, Traffic Management, FCTA</strong><span>Abuja · real-time signal monitoring, traffic analysis reports</span></span><svg class="arr" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></li>
+    <li class="row"><span class="row-year">2025–26</span><span class="row-main"><strong>Master in Data Science Management, Rome Business School</strong><span>Average grade 29/30 (30 is the top mark); capstone project 30/30</span></span></li>
+    <li class="row"><span class="row-year">2022</span><span class="row-main"><strong>Treasurer, disaster-preparedness group, national youth service (NYSC)</strong><span>Bayelsa State · ran flood, fire and oil-spill safety sessions for over 1,000 people</span></span></li>
+    <li class="row"><span class="row-year">2021</span><span class="row-main"><strong>BSc Physics, University of Ilorin</strong><span>Drone data-logger project named Project of the Year; also Writer of the Year, physics students’ association</span></span></li>
+    <li class="row"><span class="row-year">2020–21</span><span class="row-main"><strong>Technical Support Intern, Urban Motions, Abuja</strong><span>Solar energy audits and site assessments; programming for traffic-light controllers</span></span></li>
+    <li class="row"><span class="row-year">2019–21</span><span class="row-main"><strong>Undergraduate Tutor, University of Ilorin</strong><span>Taught physics and MATLAB to over 50 third- and final-year students</span></span></li>
+    <li class="row"><span class="row-year">2019</span><span class="row-main"><strong>Student Intern, Abuja traffic management centre (FCTA)</strong><span>Monitored traffic signals in real time and helped write congestion reports</span></span></li>
   </ol>
 </section>
 
