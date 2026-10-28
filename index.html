@@ -4,479 +4,287 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Olorunmaiye Peter | Data Analyst</title>
-<meta name="description" content="Data analyst working in SQL, Python, R, Excel and Power BI. Portfolio of projects on e-commerce sales, African electricity supply and customer churn.">
+<meta name="description" content="Hi, I’m Peter, a data analyst in Abuja. I use SQL, Python and Power BI to turn messy data into decisions people act on. Open to remote analyst roles.">
+<meta name="theme-color" content="#0B0D12">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Olorunmaiye Peter | Data Analyst">
+<meta property="og:description" content="I turn messy data into decisions people act on. SQL, Python and Power BI projects in e-commerce, energy and telecom.">
+<meta property="og:url" content="https://ayanfedara.github.io/">
+<meta property="og:image" content="https://ayanfedara.github.io/images/peter.jpeg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <script>
-  // Apply the saved theme before the page paints, so there is no flash.
-  try { var t = localStorage.getItem("theme"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+(function () {
+  var d = document.documentElement, t = null;
+  try { t = localStorage.getItem('theme'); } catch (e) {}
+  if (t !== 'light' && t !== 'dark') {
+    t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) ? 'light' : 'dark';
+  }
+  d.setAttribute('data-theme', t);
+  try {
+    if (sessionStorage.getItem('introSeen')) { d.classList.add('no-intro'); }
+    else { sessionStorage.setItem('introSeen', '1'); }
+  } catch (e) {}
+  d.classList.add('js');
+})();
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=DM+Sans:opsz,wght@9..40,400..700&display=swap" rel="stylesheet">
-<style>
-  :root, :root[data-theme="dark"] {
-    --bg: #0b1120;
-    --surface: #111a2e;
-    --surface-2: #17223b;
-    --line: #25314c;
-    --heading: #f4efe4;
-    --text: #c8d0de;
-    --muted: #8d99ae;
-    --gold: #cfa968;
-    --gold-hover: #e2c088;
-    --on-gold: #17110a;
-    --chip: #1b2742;
-    --shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.7);
-    color-scheme: dark;
-  }
-  :root[data-theme="light"] {
-    --bg: #f6f1e7;
-    --surface: #fffcf6;
-    --surface-2: #efe7d8;
-    --line: #dcd1bd;
-    --heading: #131b31;
-    --text: #2e3546;
-    --muted: #5b6375;
-    --gold: #8a6326;
-    --gold-hover: #6f4e1a;
-    --on-gold: #ffffff;
-    --chip: #efe7d8;
-    --shadow: 0 24px 60px -28px rgba(40, 30, 10, 0.35);
-    color-scheme: light;
-  }
-
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--text);
-    font-family: "DM Sans", system-ui, sans-serif;
-    font-size: 1.0625rem;
-    line-height: 1.65;
-    transition: background-color 0.25s ease, color 0.25s ease;
-  }
-  img { max-width: 100%; }
-  a { color: var(--gold); text-underline-offset: 3px; }
-  a:hover { color: var(--gold-hover); }
-  :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 3px; }
-
-  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
-  .serif { font-family: "Fraunces", Georgia, serif; }
-  .eyebrow {
-    display: inline-block;
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin: 0 0 14px;
-  }
-
-  /* Header */
-  .site-header {
-    position: sticky; top: 0; z-index: 10;
-    background: color-mix(in srgb, var(--bg) 88%, transparent);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--line);
-  }
-  .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 68px; }
-  .brand { display: flex; align-items: center; gap: 10px; color: var(--heading); text-decoration: none; font-family: "Fraunces", Georgia, serif; font-size: 1.15rem; font-weight: 600; }
-  .brand-mark { width: 30px; height: 30px; border: 1.5px solid var(--gold); border-radius: 50%; display: grid; place-items: center; font-size: 0.75rem; color: var(--gold); letter-spacing: 0.04em; }
-  .nav { display: flex; align-items: center; gap: 26px; }
-  .nav a { color: var(--text); text-decoration: none; font-size: 0.95rem; }
-  .nav a:hover { color: var(--gold); }
-  .theme-toggle {
-    width: 40px; height: 40px; border-radius: 50%;
-    border: 1px solid var(--line); background: var(--surface);
-    color: var(--heading); cursor: pointer; display: grid; place-items: center;
-  }
-  .theme-toggle:hover { border-color: var(--gold); color: var(--gold); }
-  .theme-toggle svg { width: 18px; height: 18px; }
-  .icon-sun { display: none; }
-  :root[data-theme="light"] .icon-sun { display: block; }
-  :root[data-theme="light"] .icon-moon { display: none; }
-
-  /* Hero */
-  .hero { position: relative; }
-
-  /* Banner: add your own as images/banner.jpg (wide, about 1600 x 400). Until then the chart artwork shows. */
-  .banner { position: relative; height: 300px; overflow: hidden; background: #0d1830; }
-  .banner-art { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-  .banner-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
-
-  .hero-body {
-    position: relative;
-    display: grid; grid-template-columns: 230px 1fr; gap: 56px; align-items: start;
-    padding-bottom: 88px;
-  }
-  .hero-text { padding-top: 40px; }
-  .hero h1 {
-    margin: 0 0 8px;
-    font-family: "Fraunces", Georgia, serif;
-    color: var(--heading);
-    font-size: clamp(2.6rem, 6vw, 4.4rem);
-    line-height: 1.04; font-weight: 600; letter-spacing: -0.015em;
-  }
-  .hero .role { font-family: "Fraunces", Georgia, serif; font-style: italic; color: var(--gold); font-size: clamp(1.4rem, 2.8vw, 1.9rem); margin: 0 0 24px; }
-  .hero .lede { max-width: 46ch; font-size: clamp(1.1rem, 2vw, 1.25rem); color: var(--heading); margin: 0 0 12px; }
-  .hero .sub { max-width: 52ch; color: var(--muted); margin: 0 0 34px; }
-
-  .actions { display: flex; gap: 12px; flex-wrap: wrap; }
-  .button {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 13px 22px; border-radius: 3px;
-    font-weight: 600; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;
-    text-decoration: none; border: 1.5px solid var(--gold);
-    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
-  }
-  .button.primary { background: var(--gold); color: var(--on-gold); }
-  .button.primary:hover { background: var(--gold-hover); border-color: var(--gold-hover); color: var(--on-gold); }
-  .button.secondary { background: transparent; color: var(--heading); border-color: var(--line); }
-  .button.secondary:hover { border-color: var(--gold); color: var(--gold); }
-
-  /* Portrait: circular, overlapping the bottom of the banner. Photo is images/peter.jpeg */
-  .portrait { position: relative; z-index: 2; margin: -115px 0 0; width: 230px; }
-  .portrait-frame {
-    aspect-ratio: 1; overflow: hidden; border-radius: 50%;
-    background: var(--surface-2);
-    border: 5px solid var(--bg);
-    box-shadow: 0 0 0 2px var(--gold), var(--shadow);
-  }
-  .portrait-frame img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 14%; display: block; }
-  .monogram {
-    display: none; width: 100%; height: 100%; place-items: center;
-    font-family: "Fraunces", Georgia, serif; font-size: 5rem; color: var(--gold);
-    background: radial-gradient(circle at 50% 35%, var(--surface-2), var(--surface));
-  }
-  .portrait.no-photo .monogram { display: grid; }
-
-  /* Stats */
-  .stats { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--surface); }
-  .stats .wrap { display: grid; grid-template-columns: repeat(3, 1fr); }
-  .stat { padding: 30px 24px; }
-  .stat + .stat { border-left: 1px solid var(--line); }
-  .stat b { display: block; font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: clamp(1.8rem, 3.6vw, 2.5rem); color: var(--gold); line-height: 1.1; font-variant-numeric: lining-nums; }
-  .stat span { color: var(--muted); font-size: 0.95rem; }
-
-  /* Sections */
-  section { padding: 96px 0; }
-  h2 { font-family: "Fraunces", Georgia, serif; color: var(--heading); font-size: clamp(1.9rem, 3.6vw, 2.6rem); line-height: 1.15; font-weight: 600; margin: 0 0 14px; }
-  .section-intro { max-width: 62ch; color: var(--muted); margin: 0 0 56px; }
-
-  /* Projects */
-  .project {
-    display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center;
-    padding: 36px; margin-bottom: 28px;
-    background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
-    transition: border-color 0.2s, transform 0.2s;
-  }
-  .project:hover { border-color: color-mix(in srgb, var(--gold) 55%, var(--line)); }
-  .project:nth-of-type(even) .figure { order: 2; }
-  .figure { margin: 0; }
-  .figure .chart { background: #fff; border-radius: 6px; padding: 10px; box-shadow: var(--shadow); }
-  .figure img { display: block; width: 100%; height: auto; border-radius: 3px; }
-  .figure figcaption { font-size: 0.85rem; color: var(--muted); margin-top: 12px; }
-  .project h3 { font-family: "Fraunces", Georgia, serif; color: var(--heading); font-size: clamp(1.4rem, 2.4vw, 1.75rem); line-height: 1.22; font-weight: 600; margin: 0 0 8px; }
-  .project .kind { color: var(--muted); font-size: 0.95rem; margin: 0 0 16px; }
-  .project p { margin: 0 0 16px; max-width: 58ch; }
-  .tools { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0 0 22px; }
-  .tools li { font-size: 0.82rem; color: var(--heading); background: var(--chip); border: 1px solid var(--line); border-radius: 999px; padding: 3px 12px; }
-  .project-link { font-weight: 600; text-decoration: none; letter-spacing: 0.02em; }
-  .project-link::after { content: " \2192"; }
-  .project-link:hover { text-decoration: underline; }
-
-  /* About */
-  .about { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .about-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 64px; align-items: start; }
-  .about-photo { margin: 0; border-radius: 6px; overflow: hidden; box-shadow: var(--shadow); aspect-ratio: 4 / 5; background: var(--surface-2); }
-  .about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .about-grid.no-photo { grid-template-columns: 1fr; }
-  .about-grid.no-photo .about-photo { display: none; }
-  .about p { max-width: 60ch; }
-  .timeline { list-style: none; margin: 36px 0 0; padding: 0; }
-  .timeline li { display: grid; grid-template-columns: 130px 1fr; gap: 24px; padding: 18px 0; border-top: 1px solid var(--line); }
-  .when { color: var(--gold); font-variant-numeric: tabular-nums; font-size: 0.92rem; font-weight: 600; }
-  .timeline strong { color: var(--heading); display: block; font-weight: 600; }
-  .timeline span { color: var(--muted); }
-
-  /* Skills */
-  .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .skill-card { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 28px; }
-  .skill-card h3 { font-family: "Fraunces", Georgia, serif; color: var(--heading); font-size: 1.25rem; font-weight: 600; margin: 0 0 14px; }
-  .skill-card ul { margin: 0; padding: 0; list-style: none; }
-  .skill-card li { padding: 7px 0; border-top: 1px solid var(--line); }
-  .skill-card li:first-child { border-top: 0; }
-
-  /* Contact */
-  .contact { text-align: center; position: relative; overflow: hidden; border-top: 1px solid var(--line); }
-  .contact::before {
-    content: ""; position: absolute; inset: 0; pointer-events: none;
-    background: radial-gradient(50% 70% at 50% 100%, color-mix(in srgb, var(--gold) 16%, transparent), transparent 70%);
-  }
-  .contact .wrap { position: relative; }
-  .contact p { max-width: 50ch; margin: 0 auto 32px; }
-  .contact .actions { justify-content: center; }
-  .contact-details { margin-top: 28px !important; color: var(--muted); font-size: 0.95rem; }
-
-  footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 0.85rem; padding: 26px 0; }
-  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-
-  @media (max-width: 860px) {
-    .banner { height: 190px; }
-    .hero-body { grid-template-columns: 1fr; gap: 0; padding-bottom: 64px; }
-    .portrait { width: 160px; margin-top: -80px; }
-    .portrait-frame { border-width: 4px; }
-    .hero-text { padding-top: 28px; }
-    .project { grid-template-columns: 1fr; gap: 24px; padding: 22px; }
-    .project:nth-of-type(even) .figure { order: 0; }
-    .about-grid { grid-template-columns: 1fr; gap: 36px; }
-    .about-photo { max-width: 340px; }
-    .skills { grid-template-columns: 1fr; }
-    .timeline li { grid-template-columns: 1fr; gap: 2px; }
-    section { padding: 64px 0; }
-  }
-  @media (max-width: 640px) {
-    .wrap { padding: 0 16px; }
-    .nav a { display: none; }
-    .stats .wrap { grid-template-columns: 1fr; }
-    .stat { padding: 20px 0; }
-    .stat + .stat { border-left: 0; border-top: 1px solid var(--line); }
-  }
-</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-<header class="site-header">
-  <div class="wrap">
-    <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">OP</span>Olorunmaiye Peter</a>
-    <nav class="nav" aria-label="Main">
-      <a href="#projects">Projects</a>
+<div class="loader" aria-hidden="true">
+  <span class="loader-word">Hello<span class="serif">.</span></span>
+  <div class="loader-bar"></div>
+  <span class="loader-meta">Olorunmaiye Peter · Data analyst</span>
+</div>
+
+<a class="skip" href="#work">Skip to content</a>
+
+<header class="nav-wrap">
+  <nav class="nav" aria-label="Main">
+    <a href="#top" class="nav-logo" aria-label="Back to top">OP</a>
+    <div class="nav-links">
+      <a href="#work">Work</a>
       <a href="#about">About</a>
-      <a href="#skills">Skills</a>
+      <a href="#path">Path</a>
       <a href="#contact">Contact</a>
-      <button class="theme-toggle" type="button" aria-label="Switch between dark and light mode">
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-      </button>
-    </nav>
+    </div>
+    <button type="button" class="icon-btn theme-toggle" data-theme-toggle aria-label="Switch to light mode">
+      <svg class="i-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+      <svg class="i-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg>
+    </button>
+    <button type="button" class="icon-btn menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+    </button>
+    <a href="mailto:ayanfepolorunmaiye@gmail.com" class="btn btn-accent nav-cta"><span class="dot dot-dark"></span>Say hello</a>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#path">Path</a>
+    <a href="#contact">Contact</a>
   </div>
 </header>
 
-<main id="top">
-  <div class="hero">
-    <div class="banner">
-      <svg class="banner-art" viewBox="0 0 1600 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-        <defs>
-          <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#0c1630"/><stop offset="1" stop-color="#1a2a4c"/>
-          </linearGradient>
-          <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#cfa968" stop-opacity="0.22"/><stop offset="1" stop-color="#cfa968" stop-opacity="0"/>
-          </linearGradient>
-          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-            <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.06" stroke-width="1"/>
-          </pattern>
-        </defs>
-        <rect width="1600" height="300" fill="url(#bg)"/>
-        <rect width="1600" height="300" fill="url(#grid)"/>
-        <g fill="#ffffff" fill-opacity="0.06">
-          <rect x="980" y="190" width="34" height="110"/><rect x="1030" y="160" width="34" height="140"/>
-          <rect x="1080" y="200" width="34" height="100"/><rect x="1130" y="130" width="34" height="170"/>
-          <rect x="1180" y="150" width="34" height="150"/><rect x="1230" y="100" width="34" height="200"/>
-          <rect x="1280" y="120" width="34" height="180"/><rect x="1330" y="80" width="34" height="220"/>
-          <rect x="1380" y="95" width="34" height="205"/><rect x="1430" y="60" width="34" height="240"/>
-          <rect x="1480" y="70" width="34" height="230"/><rect x="1530" y="40" width="34" height="260"/>
-        </g>
-        <path d="M0 250 C120 240 200 210 300 215 S480 170 580 175 S760 120 880 130 S1060 95 1180 80 S1400 50 1600 30 V300 H0Z" fill="url(#area)"/>
-        <path d="M0 250 C120 240 200 210 300 215 S480 170 580 175 S760 120 880 130 S1060 95 1180 80 S1400 50 1600 30" fill="none" stroke="#cfa968" stroke-width="2.5"/>
-        <path d="M0 275 C150 270 260 255 380 258 S600 235 720 238 S940 205 1060 208 S1320 180 1600 160" fill="none" stroke="#7fa6d9" stroke-opacity="0.55" stroke-width="2" stroke-dasharray="6 6"/>
-        <g fill="#cfa968">
-          <circle cx="300" cy="215" r="4"/><circle cx="580" cy="175" r="4"/><circle cx="880" cy="130" r="4"/><circle cx="1180" cy="80" r="4"/><circle cx="1600" cy="30" r="5"/>
-        </g>
-        <g fill="#ffffff" fill-opacity="0.35">
-          <circle cx="160" cy="120" r="2.5"/><circle cx="220" cy="90" r="2.5"/><circle cx="270" cy="140" r="2.5"/><circle cx="340" cy="70" r="2.5"/>
-          <circle cx="410" cy="110" r="2.5"/><circle cx="460" cy="60" r="2.5"/><circle cx="520" cy="95" r="2.5"/><circle cx="640" cy="55" r="2.5"/>
-          <circle cx="700" cy="85" r="2.5"/><circle cx="760" cy="40" r="2.5"/>
-        </g>
-      </svg>
-      <img class="banner-img" src="images/banner.jpg" alt="" onerror="this.remove()">
+<main>
+
+<section id="top" class="hero">
+  <div class="gridbg" aria-hidden="true"></div>
+  <div class="halo halo-top" aria-hidden="true"></div>
+  <div class="hero-inner split">
+    <div class="hero-copy">
+      <p class="status fade" style="--delay: .1s"><span class="dot dot-live"></span>Open to remote analyst roles</p>
+      <h1 class="hero-title">
+        <span class="w"><span style="--delay: .15s">Hi,</span></span>
+        <span class="w"><span style="--delay: .25s">I’m</span></span>
+        <span class="w"><span class="serif accent-text" style="--delay: .35s">Peter.</span></span>
+      </h1>
+      <p class="hero-sub">
+        <span class="w"><span style="--delay: .5s">I turn messy data</span></span>
+        <span class="w"><span style="--delay: .58s">into</span></span>
+        <span class="w"><span class="serif" style="--delay: .66s">decisions</span></span>
+        <span class="w"><span style="--delay: .74s">people act on.</span></span>
+      </p>
+      <p class="hero-lede fade" style="--delay: .9s">I’m a data analyst with a physics background, based in Abuja. I use SQL, Python and Power BI to find the one number that matters, then explain it in plain words.</p>
+      <div class="btn-row fade" style="--delay: 1.05s">
+        <a href="#work" class="btn btn-solid">See my work <svg class="arr" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
+        <a href="cv.pdf" class="btn btn-outline">Download CV</a>
+      </div>
     </div>
-    <div class="wrap hero-body">
-      <figure class="portrait" id="portrait">
-        <div class="portrait-frame">
-          <img src="images/peter.jpeg" alt="Portrait of Olorunmaiye Peter" width="561" height="1280"
-               onerror="document.getElementById('portrait').classList.add('no-photo'); this.remove();">
-          <div class="monogram" aria-hidden="true">OP</div>
-        </div>
+
+    <div class="portrait-wrap fade" style="--delay: .4s">
+      <div class="portrait">
+        <img src="images/peter.jpeg" alt="Olorunmaiye Peter smiling, wearing glasses and a navy patterned shirt" width="560" height="1280">
+      </div>
+      <span class="float-chip bob" style="top: 28px; left: -44px"><span class="dot" style="background: var(--accent)"></span>SQL</span>
+      <span class="float-chip bob" style="top: 44%; right: -36px; animation-delay: -1.6s"><span class="dot" style="background: var(--blue)"></span>Python</span>
+      <span class="float-chip bob" style="bottom: 72px; right: -24px; animation-delay: -3.2s"><span class="dot" style="background: var(--yellow)"></span>Power BI</span>
+      <div class="badge">
+        <svg class="spin" width="132" height="132" viewBox="0 0 132 132" role="img" aria-label="Data analyst, open to remote work">
+          <defs><path id="badgeCircle" d="M66,66 m-48,0 a48,48 0 1,1 96,0 a48,48 0 1,1 -96,0"></path></defs>
+          <text><textPath href="#badgeCircle">DATA ANALYST • OPEN TO REMOTE • </textPath></text>
+        </svg>
+        <svg class="badge-icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"></path><path d="M7 15l4-4 3 3 5-6"></path></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="marquees" aria-label="Tools and methods">
+  <div class="marquee band-accent">
+    <div class="track">
+      <ul class="marquee-list big">
+        <li>SQL</li><li class="star" aria-hidden="true"></li>
+        <li>Python</li><li class="star" aria-hidden="true"></li>
+        <li>Power BI</li><li class="star" aria-hidden="true"></li>
+        <li class="serif">PostgreSQL</li><li class="star" aria-hidden="true"></li>
+        <li>R</li><li class="star" aria-hidden="true"></li>
+        <li>DAX</li><li class="star" aria-hidden="true"></li>
+        <li class="serif">scikit-learn</li><li class="star" aria-hidden="true"></li>
+        <li>Excel</li><li class="star" aria-hidden="true"></li>
+      </ul>
+    </div>
+  </div>
+  <div class="marquee band-invert">
+    <div class="track rev">
+      <ul class="marquee-list small">
+        <li>Data cleaning</li><li aria-hidden="true">/</li>
+        <li>Statistical testing</li><li aria-hidden="true">/</li>
+        <li>Regression</li><li aria-hidden="true">/</li>
+        <li>Classification models</li><li aria-hidden="true">/</li>
+        <li>Star schemas</li><li aria-hidden="true">/</li>
+        <li>Dashboards</li><li aria-hidden="true">/</li>
+        <li>Charts that state the finding</li><li aria-hidden="true">/</li>
+        <li>Plain-language reports</li><li aria-hidden="true">/</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="stats wrap" aria-label="By the numbers">
+  <div class="stat reveal"><span class="stat-num" data-count="99441">99,441</span><span class="stat-label">orders analysed in PostgreSQL</span></div>
+  <div class="stat reveal"><span class="stat-num" data-count="7043">7,043</span><span class="stat-label">telecom customers ranked by churn risk</span></div>
+  <div class="stat reveal"><span class="stat-num" data-count="54">54</span><span class="stat-label">African countries modelled in Power BI</span></div>
+  <div class="stat reveal"><span class="stat-num accent-text" data-count="0.85" data-decimals="2">0.85</span><span class="stat-label">ROC AUC on unseen data, churn model</span></div>
+</section>
+
+<section id="work" class="section wrap">
+  <div class="section-head reveal">
+    <h2 class="section-title"><span class="idx">(01)</span><span>Selected <span class="serif accent-text">work</span></span></h2>
+    <p class="section-note">Every project starts with a business question and ends with something a manager can act on on Monday.</p>
+  </div>
+
+  <div class="cards">
+    <article class="card card-1">
+      <div class="card-text">
+        <p class="meta"><span class="meta-n">01</span><span aria-hidden="true">—</span><span>SQL · E-commerce · 2026</span></p>
+        <h3 class="card-title">Late deliveries drive <span class="serif">1-star</span> reviews</h3>
+        <div class="big-stat"><span class="big-num">70%</span><span class="big-label">of orders over a week late got a 1-star review</span></div>
+        <p class="card-body">I queried 99,441 orders across 9 linked tables with CTEs and window functions. Late orders were only 6.7% of deliveries but caused 37% of all 1-star reviews, and the North-east ran 14–21% late against 4.5% in São Paulo.</p>
+        <a href="https://github.com/AyanfeDara/olist-sales-analysis" class="btn btn-outline btn-sm">View on GitHub <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
+      </div>
+      <figure class="shot" style="--tilt: -2deg">
+        <img src="images/olist_delay_reviews.png" alt="Bar chart: share of orders with a 1-star review rises from 6.4% for orders more than 7 days early to 69.7% for orders more than 7 days late" width="1200" height="600" loading="lazy">
       </figure>
-      <div class="hero-text">
-        <p class="eyebrow">Portfolio</p>
-        <h1>Olorunmaiye Peter</h1>
-        <p class="role">Data analyst</p>
-        <p class="lede">I work in SQL, Python, R, Excel and Power BI, and I write up what the numbers mean for the people who have to act on them.</p>
-        <p class="sub">Master in Data Science Management, BSc Physics. Based in Abuja, Nigeria (UTC+1) and open to remote roles.</p>
-        <div class="actions">
-          <a class="button primary" href="#projects">See my projects</a>
-          <a class="button secondary" href="mailto:ayanfepolorunmaiye@gmail.com">Email me</a>
-        </div>
+    </article>
+
+    <article class="card card-2">
+      <div class="card-text">
+        <p class="meta"><span class="meta-n">02</span><span aria-hidden="true">—</span><span>Power BI · Energy · 2026</span></p>
+        <h3 class="card-title">Africa doubled its electricity, but <span class="serif">not per person</span></h3>
+        <div class="big-stat"><span class="big-num">+20%</span><span class="big-label">power per person, while generation grew 119%</span></div>
+        <p class="card-body">A three-page Power BI report on 54 countries, 2000–2024, modelled as a star schema. Population grew 83%, so supply per person only went from 534 to 639 kWh. Nigeria came lowest among its peers, and its renewable share fell from 38% to 25%.</p>
+        <a href="https://github.com/AyanfeDara/africa-electricity-dashboard" class="btn btn-outline btn-sm">View on GitHub <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
       </div>
+      <figure class="shot" style="--tilt: 2deg">
+        <img src="images/africa_overview.png" alt="Power BI overview: 961.8 TWh generated in 2024, 24.7% renewable share, 639 kWh per person, 119% generation growth since 2000" width="686" height="540" loading="lazy">
+      </figure>
+    </article>
+
+    <article class="card card-3">
+      <div class="card-text">
+        <p class="meta"><span class="meta-n">03</span><span aria-hidden="true">—</span><span>Python · Telecom · 2026</span></p>
+        <h3 class="card-title">Find half of all leavers by calling <span class="serif">one in five</span></h3>
+        <div class="big-stat"><span class="big-num">50%</span><span class="big-label">of leavers reached by contacting the riskiest 20%</span></div>
+        <p class="card-body">7,043 telecom customers. Month-to-month customers churn 15 times as often as two-year ones (42.7% against 2.8%). My logistic regression and random forest (ROC AUC 0.85) rank who to call first, covering 55% of revenue at risk.</p>
+        <a href="https://github.com/AyanfeDara/telco-churn-analysis" class="btn btn-outline btn-sm">View on GitHub <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
+      </div>
+      <figure class="shot" style="--tilt: -1.5deg">
+        <img src="images/churn_gains.png" alt="Gains chart: contacting the top 20% of customers ranked by the model reaches 50% of leavers, against 20% with random selection" width="1200" height="750" loading="lazy">
+      </figure>
+    </article>
+  </div>
+</section>
+
+<section id="about" class="section wrap">
+  <h2 class="section-title reveal"><span class="idx">(02)</span><span>A bit <span class="serif accent-text">about me</span></span></h2>
+  <div class="bento reveal">
+    <div class="tile tile-photo">
+      <img src="images/peter.jpeg" alt="Peter in Abuja" width="560" height="1280" loading="lazy">
+      <div class="photo-fade"></div>
+      <div class="photo-caption">
+        <span class="photo-name">Olorunmaiye <span class="serif">Peter</span></span>
+        <span class="pill-loc"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg>Abuja, Nigeria</span>
+      </div>
+    </div>
+
+    <div class="tile tile-wide">
+      <span class="label">The short version</span>
+      <p class="tile-lead">Physicist turned <span class="serif accent-text">data analyst</span>. I like the moment a messy table finally gives a straight answer.</p>
+      <p class="tile-body">Before analytics I worked on solar energy audits and traffic-light control systems in Abuja, and watched live signals at the FCTA traffic centre. Now I bring that same hands-on curiosity to data.</p>
+    </div>
+
+    <div class="tile">
+      <span class="label"><span class="dot dot-live"></span>Local time</span>
+      <span class="tile-num mono" data-clock>--:--</span>
+      <span class="tile-body">Abuja · UTC+1 · same hours as much of Europe</span>
+    </div>
+
+    <div class="tile">
+      <span class="label">Master’s, 2026</span>
+      <span class="tile-num accent-text">29/30</span>
+      <span class="tile-body">Data Science Management, Rome Business School. Capstone 30/30.</span>
+    </div>
+
+    <div class="tile tile-wide tile-drone">
+      <span class="label">Before data · BSc Physics, 2021</span>
+      <svg class="drone-line" aria-hidden="true" viewBox="0 0 600 160" preserveAspectRatio="none">
+        <path class="draw" d="M0,150 C40,148 60,140 90,120 S150,60 190,58 S250,80 280,70 S340,20 380,22 S440,50 470,46 S540,30 600,34" fill="none" stroke="currentColor" stroke-width="2.5" vector-effect="non-scaling-stroke"></path>
+        <path d="M0,150 C40,148 60,140 90,120 S150,60 190,58 S250,80 280,70 S340,20 380,22 S440,50 470,46 S540,30 600,34 L600,160 L0,160 Z" fill="currentColor" opacity=".08"></path>
+      </svg>
+      <div class="drone-copy">
+        <p class="tile-lead">I built a drone that <span class="serif">logs the weather</span>.</p>
+        <p class="tile-body">A BMP180 sensor on a quadcopter, streaming temperature and pressure through an ESP8266 to a live web view. Project of the Year, University of Ilorin.</p>
+      </div>
+    </div>
+
+    <div class="tile tile-wide tile-accent">
+      <span class="label">Currently</span>
+      <p class="tile-lead strong">Looking for a remote analyst role in <span class="serif">energy, mobility or operations</span>.</p>
+      <a href="#contact" class="btn btn-dark btn-sm">Let’s talk <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
     </div>
   </div>
+</section>
 
-  <div class="stats" aria-label="Projects at a glance">
-    <div class="wrap">
-      <div class="stat"><b>99,441</b><span>orders analysed in PostgreSQL</span></div>
-      <div class="stat"><b>54</b><span>countries modelled in Power BI</span></div>
-      <div class="stat"><b>0.85</b><span>ROC AUC on a churn model in Python</span></div>
-    </div>
-  </div>
+<section id="path" class="section wrap">
+  <h2 class="section-title reveal"><span class="idx">(03)</span><span>The <span class="serif accent-text">path</span> so far</span></h2>
+  <ol class="path reveal">
+    <li class="row"><span class="row-year">2025–26</span><span class="row-main"><strong>Master in Data Science Management</strong><span>Rome Business School · average 29/30, capstone 30/30</span></span><svg class="arr" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></li>
+    <li class="row"><span class="row-year">2022</span><span class="row-main"><strong>Treasurer, NYSC NEMA Community Development Group</strong><span>Bayelsa State · disaster-preparedness sessions reaching 1,000+ people</span></span><svg class="arr" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></li>
+    <li class="row"><span class="row-year">2021</span><span class="row-main"><strong>BSc Physics</strong><span>University of Ilorin · Project of the Year and Writer of the Year, NAPS</span></span><svg class="arr" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></li>
+    <li class="row"><span class="row-year">2020–21</span><span class="row-main"><strong>Technical Support Intern, Urban Motions</strong><span>Abuja · solar energy audits, embedded traffic-light control</span></span><svg class="arr" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></li>
+    <li class="row"><span class="row-year">2019–21</span><span class="row-main"><strong>Undergraduate Tutor, University of Ilorin</strong><span>Taught physics and MATLAB to 50+ final-year students</span></span><svg class="arr" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></li>
+    <li class="row"><span class="row-year">2019</span><span class="row-main"><strong>Student Intern, Traffic Management, FCTA</strong><span>Abuja · real-time signal monitoring, traffic analysis reports</span></span><svg class="arr" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></li>
+  </ol>
+</section>
 
-  <section id="projects">
-    <div class="wrap">
-      <p class="eyebrow">Selected work</p>
-      <h2>Projects</h2>
-      <p class="section-intro">Each project starts from a business question and ends with a recommendation. The code, data sources and full write-up are on GitHub.</p>
-
-      <article class="project">
-        <figure class="figure">
-          <div class="chart"><img src="images/olist_delay_reviews.png" alt="Bar chart: the share of 1-star reviews rises from 6.4% for orders delivered more than a week early to 69.7% for orders more than a week late." loading="lazy" width="1200" height="600"></div>
-          <figcaption>Share of 1-star reviews by delivery delay</figcaption>
-        </figure>
-        <div>
-          <p class="eyebrow">01 &middot; SQL</p>
-          <h3>Late deliveries drive 1-star reviews</h3>
-          <p class="kind">E-commerce sales and delivery analysis, 99,441 orders</p>
-          <p>Orders delivered more than a week late received a 1-star review 70% of the time. Late orders were only 6.7% of deliveries but produced 37% of all 1-star reviews, and the five worst states for late delivery are all in Brazil's North-east.</p>
-          <ul class="tools" aria-label="Tools used">
-            <li>PostgreSQL</li><li>SQL window functions</li><li>Python</li><li>matplotlib</li>
-          </ul>
-          <a class="project-link" href="https://github.com/AyanfeDara/olist-sales-analysis">View the SQL and findings</a>
-        </div>
-      </article>
-
-      <article class="project">
-        <figure class="figure">
-          <div class="chart"><img src="images/africa_overview.png" alt="Power BI dashboard page showing Africa's electricity generation of 961.8 TWh in 2024, a 24.7% renewable share, 639 kWh per person and 119% growth since 2000." loading="lazy" width="686" height="540"></div>
-          <figcaption>Africa overview page of the Power BI report</figcaption>
-        </figure>
-        <div>
-          <p class="eyebrow">02 &middot; Power BI</p>
-          <h3>Africa doubled its electricity supply, but not per person</h3>
-          <p class="kind">Power BI dashboard, 54 African countries, 2000 to 2024</p>
-          <p>Generation grew 119%, but population grew 83%, so electricity per person rose only 20%. Nigeria has the least electricity per person of seven peer economies, and its renewable share fell from 38% to 25% as fossil generation tripled.</p>
-          <ul class="tools" aria-label="Tools used">
-            <li>Power BI</li><li>Power Query</li><li>DAX</li><li>Star schema</li>
-          </ul>
-          <a class="project-link" href="https://github.com/AyanfeDara/africa-electricity-dashboard">View the dashboard</a>
-        </div>
-      </article>
-
-      <article class="project">
-        <figure class="figure">
-          <div class="chart"><img src="images/churn_gains.png" alt="Cumulative gains chart: contacting the riskiest 20% of customers ranked by the model reaches 50% of all leavers, against 20% with random selection." loading="lazy" width="1200" height="750"></div>
-          <figcaption>Leavers reached when customers are contacted in order of predicted risk</figcaption>
-        </figure>
-        <div>
-          <p class="eyebrow">03 &middot; Python</p>
-          <h3>Find half of all leavers by contacting one customer in five</h3>
-          <p class="kind">Customer churn analysis and model, 7,043 telecom customers</p>
-          <p>A quarter of customers left, taking 30.5% of monthly revenue. A logistic regression model (ROC AUC 0.85) ranks customers by risk, so a retention offer sent to the riskiest 20% reaches half of all leavers and 55% of the revenue at stake.</p>
-          <ul class="tools" aria-label="Tools used">
-            <li>Python</li><li>pandas</li><li>scikit-learn</li><li>Chi-square tests</li>
-          </ul>
-          <a class="project-link" href="https://github.com/AyanfeDara/telco-churn-analysis">View the notebook</a>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <section id="about" class="about">
-    <div class="wrap">
-      <div class="about-grid no-photo">
-        <div>
-          <p class="eyebrow">About</p>
-          <h2>From physics to data</h2>
-          <p>A physics degree taught me to measure carefully and to trust numbers only after checking them. My master's in Data Science Management added the business side: turning an analysis into a decision someone can act on.</p>
-          <ol class="timeline">
-            <li>
-              <div class="when">2025 to 2026</div>
-              <div><strong>Master in Data Science Management, Rome Business School</strong><span>Average grade 29/30; capstone project graded 30/30.</span></div>
-            </li>
-            <li>
-              <div class="when">2021</div>
-              <div><strong>BSc Physics, University of Ilorin</strong><span>Final-year project: a drone that logged temperature and pressure data, named Project of the Year.</span></div>
-            </li>
-          </ol>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="skills">
-    <div class="wrap">
-      <p class="eyebrow">Toolkit</p>
-      <h2>Skills</h2>
-      <p class="section-intro">Tools I have used in the projects above and in my master's coursework.</p>
-      <div class="skills">
-        <div class="skill-card">
-          <h3>Data and code</h3>
-          <ul>
-            <li>SQL (PostgreSQL, SQL Server)</li>
-            <li>Python (pandas, scikit-learn, SciPy)</li>
-            <li>R</li>
-            <li>Excel</li>
-          </ul>
-        </div>
-        <div class="skill-card">
-          <h3>Reporting</h3>
-          <ul>
-            <li>Power BI, Power Query, DAX</li>
-            <li>Charts that state the finding</li>
-            <li>Written reports for non-technical readers</li>
-          </ul>
-        </div>
-        <div class="skill-card">
-          <h3>Analysis</h3>
-          <ul>
-            <li>Data cleaning and quality checks</li>
-            <li>Statistical testing and regression</li>
-            <li>Classification models and evaluation</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" class="contact">
-    <div class="wrap">
-      <p class="eyebrow">Contact</p>
-      <h2>Let's work together</h2>
-      <p>I am looking for a remote data analyst role. If you have a role or a project in mind, email me.</p>
-      <div class="actions">
-        <a class="button primary" href="mailto:ayanfepolorunmaiye@gmail.com">Email me</a>
-        <a class="button secondary" href="https://github.com/AyanfeDara">See my GitHub</a>
-      </div>
-      <p class="contact-details">ayanfepolorunmaiye@gmail.com &middot; Abuja, Nigeria (UTC+1)</p>
-    </div>
-  </section>
 </main>
 
-<footer>
-  <div class="wrap">
-    <span>&copy; 2026 Olorunmaiye Peter</span>
-    <span>Data sources are credited in each project.</span>
+<footer id="contact" class="contact">
+  <div class="halo halo-bottom" aria-hidden="true"></div>
+  <div class="wrap contact-inner">
+    <span class="idx">(04) Contact</span>
+    <h2 class="contact-title reveal">Got data that needs <span class="serif accent-text">a straight answer?</span></h2>
+    <p class="contact-note">I’d love to hear about your team, your data and the question you are stuck on.</p>
+    <a href="mailto:ayanfepolorunmaiye@gmail.com" class="ulink contact-email">ayanfepolorunmaiye@gmail.com</a>
+    <div class="btn-row">
+      <a href="https://github.com/AyanfeDara" class="btn btn-outline"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>GitHub</a>
+      <!-- TODO: replace [handle] with Peter's LinkedIn handle -->
+      <a href="https://www.linkedin.com/in/[handle]" class="btn btn-outline"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>LinkedIn</a>
+      <a href="cv.pdf" class="btn btn-solid"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"></path><path d="M7 10l5 5 5-5"></path><path d="M5 21h14"></path></svg>Download CV</a>
+    </div>
+  </div>
+  <div class="ghost-name" aria-hidden="true">Peter<span class="serif accent-text">.</span></div>
+  <div class="wrap footer-bar">
+    <span>© <span data-year>2026</span> Olorunmaiye Peter</span>
+    <span class="mono">Abuja <span data-clock>--:--</span></span>
+    <a href="#top" class="ulink">Back to top ↑</a>
   </div>
 </footer>
 
-<script>
-  document.querySelector(".theme-toggle").addEventListener("click", function () {
-    var root = document.documentElement;
-    var next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
-    root.setAttribute("data-theme", next);
-    try { localStorage.setItem("theme", next); } catch (e) {}
-  });
-</script>
+<script src="js/main.js"></script>
 </body>
 </html>
