@@ -98,6 +98,33 @@
     revealEls.forEach(function (el) { el.classList.add('in'); });
   }
 
+  /* ---------- project loops: play only while on screen, never with reduced motion ---------- */
+  // The cards stack, so a covered card still counts as on screen. Only the topmost visible one plays.
+  var loops = [].slice.call(document.querySelectorAll('video.loop'));
+  if (loops.length && !reduceMotion) {
+    var pending = false;
+    var pickActive = function () {
+      pending = false;
+      var vh = window.innerHeight, active = null;
+      loops.forEach(function (v) {
+        var r = v.getBoundingClientRect();
+        if (r.bottom > 0 && r.top < vh * 0.75) active = v;
+      });
+      loops.forEach(function (v) {
+        if (v === active) {
+          if (v.preload !== 'auto') { v.preload = 'auto'; v.load(); }
+          if (v.paused) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+        } else if (!v.paused) {
+          v.pause();
+        }
+      });
+    };
+    var queue = function () { if (!pending) { pending = true; requestAnimationFrame(pickActive); } };
+    window.addEventListener('scroll', queue, { passive: true });
+    window.addEventListener('resize', queue);
+    pickActive();
+  }
+
   /* ---------- live Abuja clock ---------- */
   var clocks = document.querySelectorAll('[data-clock]');
   var fmt;
