@@ -536,3 +536,14 @@ html:not(.js) .draw { stroke-dashoffset: 0; }
 .band-calm .marquee-list.big { gap: 32px; padding-right: 32px; font-weight: 500; font-size: clamp(1.1rem, 1.8vw, 1.4rem); letter-spacing: -.01em; }
 .band-calm .star { width: 10px; height: 10px; background: var(--accent-text); opacity: .8; }
 .js .band-calm .track { animation-duration: 60s; }
+
+/* banner photo, faint, behind the top section; fades out towards the bottom */
+.hero { isolation: isolate; }
+.hero::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: url("../images/banner.jpg") center 30% / cover no-repeat;
+  opacity: .22;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 45%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 45%, transparent 100%);
+}
+:root[data-theme="light"] .hero::before { opacity: .14; filter: grayscale(.3); }
