@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#0B0D12">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Olorunmaiye Peter | Data Analyst">
-<meta property="og:description" content="I turn messy data into decisions people act on. SQL, Python, R and Power BI projects in e-commerce, energy, telecom and retail.">
+<meta property="og:description" content="I turn messy data into decisions people act on. SQL, Python, R and Power BI projects in e-commerce, energy, telecom, retail and aviation.">
 <meta property="og:url" content="https://ayanfedara.github.io/">
 <meta property="og:image" content="https://ayanfedara.github.io/images/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -202,6 +202,25 @@
       <figure class="shot" style="--tilt: 1.5deg">
         <video class="loop" muted loop playsinline preload="none" width="1280" height="800" poster="media/retail_poster.webp" aria-label="Animation: R code fits three forecasting methods, then bars show their average error on 24 unseen months: exponential smoothing 3.2%, same month last year 5.7%, ARIMA 8.1%">
           <source src="media/retail.mp4" type="video/mp4"><source src="media/retail.webm" type="video/webm">
+        </video>
+      </figure>
+    </article>
+
+    <article class="card card-5">
+      <div class="card-text">
+        <p class="meta"><span class="meta-n">05</span><span aria-hidden="true">—</span><span>R · Aviation · 2026</span></p>
+        <h3 class="card-title">Evening flights leave late <span class="serif">three times as often</span></h3>
+        <div class="big-stat"><span class="big-num">3×</span><span class="big-label">as likely to leave late after 6pm as before 9am</span></div>
+        <p class="card-body">I joined 435,352 flights from New York’s three airports in 2023 to hourly weather at each airport, in R. Rain, poor visibility and strong wind each raised the late rate by 6 to 9 points, but only one flight in eight left in rain. A logistic regression showed time of day matters most: holding airline, airport and weather constant, 10% of flights would leave late if all left before 9am, against 32% after 6pm.</p>
+        <p class="takeaway"><span>What I’d do</span>Build more slack into the evening timetable, where delays carried forward from earlier flights pile up, and plan for bad-weather days separately.</p>
+        <div class="card-links">
+          <a href="https://ayanfedara.github.io/nyc-flight-delays/flight_delays.html" class="btn btn-outline btn-sm">Read the report <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
+          <a href="https://github.com/AyanfeDara/nyc-flight-delays" class="btn btn-outline btn-sm">View on GitHub <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
+        </div>
+      </div>
+      <figure class="shot" style="--tilt: -1.5deg">
+        <video class="loop" muted loop playsinline preload="none" width="1280" height="800" poster="media/flights_poster.webp" aria-label="Animation: R code fits a logistic regression, then bars show the share of NYC departures leaving 15 or more minutes late by scheduled hour, rising from 8.9% at 6:00 to 32.5% at 19:00">
+          <source src="media/flights.mp4" type="video/mp4"><source src="media/flights.webm" type="video/webm">
         </video>
       </figure>
     </article>

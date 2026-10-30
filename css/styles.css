@@ -496,7 +496,7 @@ html:not(.js) .draw { stroke-dashoffset: 0; }
 .section-title { font-size: clamp(2rem, 3.8vw, 3rem); letter-spacing: -.04em; }
 
 /* project cards: one neutral surface, one accent, no tilt, no stacking */
-.card, .card-1, .card-2, .card-3, .card-4 {
+.card, .card-1, .card-2, .card-3, .card-4, .card-5 {
   position: relative; top: auto;
   background: var(--surface); border: 1px solid var(--line-soft);
   box-shadow: none; border-radius: 24px; padding: 40px; gap: 48px;
@@ -526,7 +526,7 @@ html:not(.js) .draw { stroke-dashoffset: 0; }
 }
 @media (max-width: 640px) {
   .hero { padding: 120px 16px 56px; }
-  .card, .card-1, .card-2, .card-3, .card-4 { padding: 24px; }
+  .card, .card-1, .card-2, .card-3, .card-4, .card-5 { padding: 24px; }
   .big-num { font-size: 48px; }
 }
 
