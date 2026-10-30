@@ -208,6 +208,23 @@
         </video>
       </figure>
     </article>
+
+    <article class="card card-4">
+      <div class="card-text">
+        <p class="meta"><span class="meta-n">04</span><span aria-hidden="true">—</span><span>R · Retail · 2026</span></p>
+        <h3 class="card-title">Forecasting US retail sales <span class="serif">within 3%</span></h3>
+        <div class="big-stat"><span class="big-num">3.2%</span><span class="big-label">average error on 24 months the model had not seen</span></div>
+        <p class="card-body">I forecast monthly sales for five US store types in R, using Census data from 2010 to 2026. Online sales more than doubled since 2019, while clothing fell once inflation is taken into account. I tested three methods on two years they had not seen: exponential smoothing was off by 3.2% on average, against 5.7% for simply repeating last year.</p>
+        <p class="takeaway"><span>What it means</span>Online is forecast to grow 6.7% over the next 12 months and grocery to stay almost flat. Clothing is the hardest to forecast, so it needs the largest stock buffer.</p>
+        <div class="card-links">
+          <a href="https://ayanfedara.github.io/us-retail-forecast/retail_forecast.html" class="btn btn-outline btn-sm">Read the report <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
+          <a href="https://github.com/AyanfeDara/us-retail-forecast" class="btn btn-outline btn-sm">View on GitHub <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
+        </div>
+      </div>
+      <figure class="shot" style="--tilt: 1.5deg">
+        <img src="images/retail_accuracy.png" width="1200" height="667" loading="lazy" alt="Bar chart of forecast error on 24 unseen months for five US store types: exponential smoothing had the lowest error for four of the five, and ARIMA failed for clothing stores with a 26.5% error">
+      </figure>
+    </article>
   </div>
 </section>
 
