@@ -610,3 +610,5 @@ html:not(.js) .draw { stroke-dashoffset: 0; }
 .rail .takeaway { font-size: 14px; }
 .tool-head { margin-bottom: 10px; }
 .tool-name { font-size: clamp(1.35rem, 2.2vw, 1.75rem); }
+.rail .card-links { gap: 8px; }
+.rail .btn-sm { padding: 0 14px; font-size: 13.5px; gap: 8px; }

@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Africa Electricity Dashboard | Olorunmaiye Peter</title>
+<meta name="description" content="Interactive version of Olorunmaiye Peter's Power BI report on electricity in 54 African countries, 2000 to 2024.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<script>
+(function () {
+  var t = null; try { t = localStorage.getItem('theme'); } catch (e) {}
+  if (t !== 'light' && t !== 'dark') t = (window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches) ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', t);
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+:root, :root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0B0D12; --surface: #12151C; --surface-2: #171B24; --line: #232836; --text: #EDEBE6; --muted: #A3A8B3;
+  --accent: #FF6A3D; --accent-text: #FF7A50; --grid: rgba(237,235,230,.07); --bar: #3A4152;
+  --fossil: #7C8496; --nuclear: #B79CFF; --hydro: #4C8DF6; --solar: #F5C24B; --wind: #3CC8B4; --other: #8BD46A;
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #F4F2EE; --surface: #FFFFFF; --surface-2: #F8F6F2; --line: #E2DED6; --text: #0B0D12; --muted: #555B66;
+  --accent: #E8603C; --accent-text: #C2410C; --grid: rgba(11,13,18,.07); --bar: #C9CED6;
+  --fossil: #6B7280; --nuclear: #7C5CD6; --hydro: #2563EB; --solar: #D69E1A; --wind: #0F9E8A; --other: #4D9A2A;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.55 Geist, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 8px; }
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+.mono { font-family: "Geist Mono", monospace; }
+.serif { font-family: "Instrument Serif", serif; font-style: italic; font-weight: 400; color: var(--accent-text); }
+
+header { padding: 22px 0 8px; }
+.top { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 15px; }
+.top a { text-decoration: none; color: var(--muted); }
+.top a:hover { color: var(--text); }
+.toggle { border: 1px solid var(--line); background: transparent; color: var(--text); border-radius: 999px; padding: 7px 14px; font: inherit; font-size: 14px; cursor: pointer; }
+h1 { margin: 26px 0 6px; font-size: clamp(1.8rem, 3.6vw, 2.6rem); line-height: 1.08; letter-spacing: -.04em; font-weight: 650; }
+.lede { margin: 0; color: var(--muted); max-width: 760px; font-size: 15px; }
+.lede a { color: var(--accent-text); }
+
+.controls { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); margin-top: 22px; }
+.controls .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; padding-top: 12px; padding-bottom: 12px; }
+.tabs { display: flex; gap: 4px; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 4px; }
+.tab { border: 0; background: transparent; color: var(--muted); font: inherit; font-size: 14px; font-weight: 550; padding: 8px 16px; border-radius: 999px; cursor: pointer; white-space: nowrap; }
+.tab[aria-selected="true"] { background: var(--text); color: var(--bg); }
+.year { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--muted); }
+.year output { font-family: "Geist Mono", monospace; font-size: 20px; color: var(--text); min-width: 52px; }
+input[type=range] { width: 220px; accent-color: var(--accent); }
+select { font: inherit; font-size: 15px; color: var(--text); background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; }
+
+main { padding: 24px 0 40px; }
+.panel[hidden] { display: none; }
+.finding { margin: 0 0 18px; font-size: clamp(1.1rem, 1.8vw, 1.35rem); font-weight: 550; letter-spacing: -.02em; max-width: 900px; }
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 14px; }
+.kpi { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; }
+.kpi .label { font-family: "Geist Mono", monospace; font-size: 12px; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
+.kpi .value { display: block; margin-top: 6px; font-size: clamp(1.6rem, 2.6vw, 2.2rem); font-weight: 650; letter-spacing: -.04em; font-variant-numeric: tabular-nums; }
+.kpi .note { font-size: 13px; color: var(--muted); }
+.grid { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 14px; }
+.grid.even { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px 12px; min-width: 0; }
+.card h2 { margin: 0 0 2px; font-size: 16px; font-weight: 600; letter-spacing: -.01em; }
+.card .sub { margin: 0 0 10px; font-size: 13px; color: var(--muted); }
+.chart { position: relative; height: 300px; }
+.chart.tall { height: 360px; }
+.row-select { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 16px; font-size: 14px; color: var(--muted); }
+.quick { display: flex; flex-wrap: wrap; gap: 6px; }
+.quick button { border: 1px solid var(--line); background: transparent; color: var(--muted); border-radius: 999px; padding: 5px 12px; font: inherit; font-size: 13px; cursor: pointer; }
+.quick button:hover { color: var(--text); border-color: var(--muted); }
+table { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+th, td { text-align: right; padding: 9px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th:first-child, td:first-child { text-align: left; }
+th { font-weight: 600; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; font-family: "Geist Mono", monospace; }
+tr.hl td { color: var(--accent-text); font-weight: 600; }
+.table-wrap { overflow-x: auto; }
+footer { border-top: 1px solid var(--line); padding: 20px 0 36px; font-size: 13px; color: var(--muted); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
+footer a { color: var(--text); }
+@media (max-width: 900px) {
+  .grid, .grid.even { grid-template-columns: minmax(0, 1fr); }
+  .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .wrap { padding: 0 16px; }
+  .tabs { width: 100%; overflow-x: auto; }
+  .tab { padding: 8px 12px; }
+  .year { width: 100%; }
+  input[type=range] { flex: 1; width: auto; }
+  .chart { height: 260px; }
+  .chart.tall { height: 300px; }
+}
+</style>
+</head>
+<body>
+<header class="wrap">
+  <div class="top">
+    <a href="../#work">← All projects</a>
+    <button class="toggle" type="button" id="theme">Theme</button>
+  </div>
+  <h1>Africa's electricity, <span class="serif">2000 to 2024</span></h1>
+  <p class="lede">An interactive web version of my <a href="https://github.com/AyanfeDara/africa-electricity-dashboard">Power BI report</a>, built from the same data and the same measures. Pick a year, a country or a page; hover over any chart for exact values.</p>
+</header>
+
+<div class="controls">
+  <div class="wrap">
+    <div class="tabs" role="tablist" aria-label="Dashboard pages">
+      <button class="tab" role="tab" id="t-overview" aria-controls="p-overview" aria-selected="true">Overview</button>
+      <button class="tab" role="tab" id="t-country" aria-controls="p-country" aria-selected="false" tabindex="-1">Country</button>
+      <button class="tab" role="tab" id="t-peers" aria-controls="p-peers" aria-selected="false" tabindex="-1">Nigeria vs peers</button>
+    </div>
+    <label class="year">Year <input type="range" id="year" min="2000" max="2024" step="1" value="2024" aria-describedby="yearOut"> <output id="yearOut">2024</output></label>
+  </div>
+</div>
+
+<main class="wrap">
+  <section class="panel" id="p-overview" role="tabpanel" aria-labelledby="t-overview">
+    <p class="finding">Generation more than doubled since 2000, but population grew 83%, so electricity per person rose only 20%.</p>
+    <div class="kpis" id="k-overview"></div>
+    <div class="grid">
+      <div class="card"><h2>Electricity generation, TWh</h2><p class="sub">All 54 countries. The dashed line marks the selected year.</p><div class="chart"><canvas id="c-trend" aria-label="Line chart of total and renewable electricity generation in Africa, 2000 to 2024"></canvas></div></div>
+      <div class="card"><h2>Largest producers, TWh</h2><p class="sub" id="top-sub">Top 10 in 2024</p><div class="chart"><canvas id="c-top" aria-label="Bar chart of the ten African countries that generated the most electricity in the selected year"></canvas></div></div>
+    </div>
+  </section>
+
+  <section class="panel" id="p-country" role="tabpanel" aria-labelledby="t-country" hidden>
+    <div class="row-select">
+      <label for="country">Country</label>
+      <select id="country"></select>
+      <div class="quick" aria-label="Quick picks">
+        <button type="button" data-c="Kenya">Kenya</button>
+        <button type="button" data-c="Ethiopia">Ethiopia</button>
+        <button type="button" data-c="South Africa">South Africa</button>
+        <button type="button" data-c="Nigeria">Nigeria</button>
+      </div>
+    </div>
+    <p class="finding" id="country-finding"></p>
+    <div class="kpis" id="k-country"></div>
+    <div class="grid">
+      <div class="card"><h2 id="mix-title">Generation by source, TWh</h2><p class="sub">Stacked: fossil fuels, nuclear and each renewable source</p><div class="chart tall"><canvas id="c-mix" aria-label="Stacked area chart of the selected country's electricity generation by source"></canvas></div></div>
+      <div class="card"><h2>Renewable share</h2><p class="sub">Share of generation from renewables</p><div class="chart tall"><canvas id="c-share" aria-label="Line chart of the selected country's renewable share"></canvas></div></div>
+    </div>
+  </section>
+
+  <section class="panel" id="p-peers" role="tabpanel" aria-labelledby="t-peers" hidden>
+    <p class="finding">Nigeria has the least electricity per person of these seven economies, and Ethiopia, which started far lower, has overtaken it.</p>
+    <div class="grid even">
+      <div class="card"><h2>Electricity per person, kWh</h2><p class="sub" id="peer-sub">2024</p><div class="chart"><canvas id="c-peer-kwh" aria-label="Bar chart of electricity per person for seven African economies"></canvas></div></div>
+      <div class="card"><h2>Renewable share</h2><p class="sub">2000 to 2024. Nigeria in orange; hover to see every country</p><div class="chart"><canvas id="c-peer-share" aria-label="Line chart of renewable share over time for seven African economies"></canvas></div></div>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h2>Comparison table</h2><p class="sub" id="table-sub">2000 against 2024</p>
+      <div class="table-wrap"><table id="peer-table"></table></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Source: Our World in Data energy dataset (Ember, Energy Institute), CC BY 4.0. 54 African countries; per-person figures divide total generation by total population.</span>
+    <span>Built by <a href="../">Olorunmaiye Peter</a></span>
+  </div>
+</footer>
+
+<script src="africa-data.js"></script>
+<script src="chart.umd.js"></script>
+<script>
+(function () {
+  'use strict';
+  var D = window.AFRICA, YEARS = D.years, C = D.countries;
+  var byName = {}; C.forEach(function (c) { byName[c.name] = c; });
+  var PEERS = ['Nigeria', 'Ghana', 'Kenya', 'Egypt', 'Morocco', 'South Africa', 'Ethiopia'];
+  var reduceMotion = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var state = { year: 2024, country: 'Nigeria', tab: 'overview' };
+  var charts = {};
+
+  /* ---------- measures (same as the Power BI DAX) ---------- */
+  var yi = function (y) { return y - YEARS[0]; };
+  var v = function (x) { return x == null ? 0 : x; };
+  function total(field, y, list) { var i = yi(y), s = 0; (list || C).forEach(function (c) { s += v(c[field][i]); }); return s; }
+  function share(list, y) { var g = total('gen', y, list); return g ? total('ren', y, list) / g : null; }
+  function perPerson(list, y) { var p = total('pop', y, list); return p ? total('gen', y, list) * 1e9 / p : null; }
+  function growth(list, y) { var a = total('gen', 2000, list); return a ? total('gen', y, list) / a - 1 : null; }
+
+  var fmt = {
+    twh: function (x) { return x == null ? '–' : x.toLocaleString('en-US', { maximumFractionDigits: 1, minimumFractionDigits: 1 }); },
+    pct: function (x) { return x == null ? '–' : (100 * x).toFixed(1) + '%'; },
+    signed: function (x) { return x == null ? '–' : (x >= 0 ? '+' : '') + Math.round(100 * x) + '%'; },
+    kwh: function (x) { return x == null ? '–' : Math.round(x).toLocaleString('en-US'); }
+  };
+  var css = function (name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); };
+
+  function kpis(el, list, y) {
+    el.innerHTML = [
+      ['Generation', fmt.twh(total('gen', y, list)) + ' TWh', 'electricity produced in ' + y],
+      ['Renewable share', fmt.pct(share(list, y)), 'of generation in ' + y],
+      ['Per person', fmt.kwh(perPerson(list, y)) + ' kWh', 'generation ÷ population'],
+      ['Since 2000', y === 2000 ? '–' : fmt.signed(growth(list, y)), 'change in generation']
+    ].map(function (k) { return '<div class="kpi"><span class="label">' + k[0] + '</span><span class="value">' + k[1] + '</span><span class="note">' + k[2] + '</span></div>'; }).join('');
+  }
+
+  /* ---------- chart helpers ---------- */
+  function base(extra) {
+    var grid = css('--grid'), muted = css('--muted');
+    var o = {
+      responsive: true, maintainAspectRatio: false, animation: reduceMotion ? false : { duration: 450 },
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { labels: { color: muted, boxWidth: 12, boxHeight: 12, font: { family: 'Geist, system-ui, sans-serif', size: 12 } } },
+        tooltip: { titleFont: { family: 'Geist, system-ui, sans-serif' }, bodyFont: { family: 'Geist, system-ui, sans-serif' } }
+      },
+      scales: {
+        x: { grid: { color: grid }, ticks: { color: muted, font: { family: "'Geist Mono', ui-monospace, monospace", size: 11 } } },
+        y: { grid: { color: grid }, ticks: { color: muted, font: { family: "'Geist Mono', ui-monospace, monospace", size: 11 } }, beginAtZero: true }
+      }
+    };
+    return Object.assign(o, extra || {});
+  }
+  // vertical dashed line at the selected year
+  var yearLine = {
+    id: 'yearLine',
+    afterDatasetsDraw: function (chart) {
+      if (!YEARLINE[chart.canvas.id]) return;
+      var x = chart.scales.x.getPixelForValue(String(state.year));
+      var a = chart.chartArea, ctx = chart.ctx;
+      ctx.save(); ctx.strokeStyle = css('--muted'); ctx.setLineDash([4, 4]); ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(x, a.top); ctx.lineTo(x, a.bottom); ctx.stroke(); ctx.restore();
+    }
+  };
+  var YEARLINE = { 'c-trend': 1, 'c-mix': 1, 'c-share': 1, 'c-peer-share': 1 };
+  Chart.register(yearLine);
+  function make(id, cfg) { if (charts[id]) charts[id].destroy(); charts[id] = new Chart(document.getElementById(id), cfg); }
+  var labels = YEARS.map(String);
+
+  /* ---------- page 1: overview ---------- */
+  function drawOverview() {
+    var y = state.year;
+    kpis(document.getElementById('k-overview'), C, y);
+    var o = base(); o.plugins.yearLine = true;
+    o.plugins.tooltip.callbacks = { label: function (c) { return c.dataset.label + ': ' + fmt.twh(c.parsed.y) + ' TWh'; } };
+    make('c-trend', { type: 'line', options: o, data: { labels: labels, datasets: [
+      { label: 'All generation', data: YEARS.map(function (yy) { return total('gen', yy); }), borderColor: css('--accent'), backgroundColor: css('--accent'), pointRadius: 0, borderWidth: 2.5, tension: .2 },
+      { label: 'Renewables', data: YEARS.map(function (yy) { return total('ren', yy); }), borderColor: css('--wind'), backgroundColor: css('--wind'), pointRadius: 0, borderWidth: 2.5, tension: .2 }
+    ] } });
+    var top = C.map(function (c) { return { n: c.name, g: v(c.gen[yi(y)]) }; }).sort(function (a, b) { return b.g - a.g; }).slice(0, 10);
+    document.getElementById('top-sub').textContent = 'Top 10 in ' + y + '; Nigeria highlighted';
+    var ob = base({ indexAxis: 'y' }); ob.plugins.legend = { display: false };
+    ob.interaction = { mode: 'nearest', axis: 'y', intersect: false };
+    ob.scales.y.grid = { display: false };
+    ob.plugins.tooltip.callbacks = { label: function (c) { return fmt.twh(c.parsed.x) + ' TWh'; } };
+    make('c-top', { type: 'bar', options: ob, data: { labels: top.map(function (t) { return t.n; }), datasets: [
+      { data: top.map(function (t) { return t.g; }), backgroundColor: top.map(function (t) { return t.n === 'Nigeria' ? css('--accent') : css('--bar'); }), borderRadius: 4, maxBarThickness: 22 }
+    ] } });
+  }
+
+  /* ---------- page 2: country profile ---------- */
+  var SOURCES = [['fos', 'Fossil fuels', '--fossil'], ['nuc', 'Nuclear', '--nuclear'], ['hyd', 'Hydro', '--hydro'], ['sol', 'Solar', '--solar'], ['win', 'Wind', '--wind'], ['oth', 'Geothermal and other renewables', '--other']];
+  function drawCountry() {
+    var c = byName[state.country], y = state.year, list = [c];
+    kpis(document.getElementById('k-country'), list, y);
+    var s0 = share(list, 2000), s1 = share(list, 2024), main = null, best = 0;
+    SOURCES.forEach(function (s) { var x = v(c[s[0]][yi(2024)]); if (x > best) { best = x; main = s[1].toLowerCase(); } });
+    document.getElementById('country-finding').textContent = state.country + ': ' + fmt.kwh(perPerson(list, 2024)) + ' kWh per person in 2024; the renewable share went from ' + fmt.pct(s0) + ' in 2000 to ' + fmt.pct(s1) + ' in 2024. Its largest source in 2024 was ' + main + '.';
+    document.getElementById('mix-title').textContent = state.country + ': generation by source, TWh';
+    var om = base(); om.plugins.yearLine = true; om.scales.y.stacked = true;
+    om.plugins.tooltip.callbacks = { label: function (k) { return k.dataset.label + ': ' + fmt.twh(k.parsed.y) + ' TWh'; } };
+    make('c-mix', { type: 'line', options: om, data: { labels: labels, datasets: SOURCES.map(function (s) {
+      var col = css(s[2]);
+      return { label: s[1], data: c[s[0]].map(v), fill: true, backgroundColor: col + 'CC', borderColor: col, borderWidth: 1, pointRadius: 0, tension: .2 };
+    }) } });
+    var os = base(); os.plugins.yearLine = true; os.plugins.legend = { display: false }; os.scales.y.max = 100;
+    os.scales.y.ticks.callback = function (t) { return t + '%'; };
+    os.plugins.tooltip.callbacks = { label: function (k) { return 'Renewable share: ' + k.parsed.y.toFixed(1) + '%'; } };
+    make('c-share', { type: 'line', options: os, data: { labels: labels, datasets: [
+      { data: YEARS.map(function (yy) { var x = share(list, yy); return x == null ? null : 100 * x; }), borderColor: css('--wind'), backgroundColor: css('--wind'), pointRadius: 0, borderWidth: 2.5, tension: .2, spanGaps: true }
+    ] } });
+  }
+
+  /* ---------- page 3: Nigeria and its peers ---------- */
+  function drawPeers() {
+    var y = state.year;
+    var rows = PEERS.map(function (n) { return { n: n, k: perPerson([byName[n]], y) }; }).sort(function (a, b) { return b.k - a.k; });
+    document.getElementById('peer-sub').textContent = y + ', sorted high to low';
+    var ok = base({ indexAxis: 'y' }); ok.plugins.legend = { display: false }; ok.scales.y.grid = { display: false };
+    ok.interaction = { mode: 'nearest', axis: 'y', intersect: false };
+    ok.plugins.tooltip.callbacks = { label: function (k) { return fmt.kwh(k.parsed.x) + ' kWh per person'; } };
+    make('c-peer-kwh', { type: 'bar', options: ok, data: { labels: rows.map(function (r) { return r.n; }), datasets: [
+      { data: rows.map(function (r) { return r.k; }), backgroundColor: rows.map(function (r) { return r.n === 'Nigeria' ? css('--accent') : css('--bar'); }), borderRadius: 4, maxBarThickness: 26 }
+    ] } });
+    var op = base(); op.plugins.yearLine = true; op.scales.y.max = 100;
+    op.scales.y.ticks.callback = function (t) { return t + '%'; };
+    op.plugins.tooltip.callbacks = { label: function (k) { return k.dataset.label + ': ' + k.parsed.y.toFixed(1) + '%'; } };
+    op.plugins.tooltip.itemSort = function (a, b) { return b.parsed.y - a.parsed.y; };
+    op.plugins.legend = { display: false };
+    make('c-peer-share', { type: 'line', options: op, data: { labels: labels, datasets: PEERS.map(function (n) {
+      var ng = n === 'Nigeria';
+      return { label: n, data: YEARS.map(function (yy) { var x = share([byName[n]], yy); return x == null ? null : 100 * x; }),
+        borderColor: ng ? css('--accent') : css('--bar'), backgroundColor: ng ? css('--accent') : css('--bar'),
+        borderWidth: ng ? 3 : 1.5, pointRadius: 0, tension: .2, order: ng ? 0 : 1 };
+    }) } });
+    document.getElementById('table-sub').textContent = '2000 against ' + y;
+    var head = '<thead><tr><th>Country</th><th>Generation 2000, TWh</th><th>Generation ' + y + ', TWh</th><th>Change</th><th>Per person ' + y + ', kWh</th><th>Renewable share ' + y + '</th></tr></thead>';
+    var body = PEERS.slice().sort(function (a, b) { return perPerson([byName[b]], y) - perPerson([byName[a]], y); }).map(function (n) {
+      var l = [byName[n]];
+      return '<tr' + (n === 'Nigeria' ? ' class="hl"' : '') + '><td>' + n + '</td><td>' + fmt.twh(total('gen', 2000, l)) + '</td><td>' + fmt.twh(total('gen', y, l)) + '</td><td>' + (y === 2000 ? '–' : fmt.signed(growth(l, y))) + '</td><td>' + fmt.kwh(perPerson(l, y)) + '</td><td>' + fmt.pct(share(l, y)) + '</td></tr>';
+    }).join('');
+    document.getElementById('peer-table').innerHTML = head + '<tbody>' + body + '</tbody>';
+  }
+
+  var draw = { overview: drawOverview, country: drawCountry, peers: drawPeers };
+  function render() { draw[state.tab](); }
+
+  /* ---------- controls ---------- */
+  var sel = document.getElementById('country');
+  sel.innerHTML = C.map(function (c) { return '<option>' + c.name + '</option>'; }).join('');
+  sel.value = state.country;
+  sel.addEventListener('change', function () { state.country = sel.value; drawCountry(); });
+  document.querySelectorAll('.quick button').forEach(function (b) {
+    b.addEventListener('click', function () { state.country = b.getAttribute('data-c'); sel.value = state.country; drawCountry(); });
+  });
+  var range = document.getElementById('year'), out = document.getElementById('yearOut');
+  range.addEventListener('input', function () { state.year = +range.value; out.textContent = range.value; render(); });
+
+  var tabs = [].slice.call(document.querySelectorAll('.tab'));
+  function show(name) {
+    state.tab = name;
+    tabs.forEach(function (t) {
+      var on = t.id === 't-' + name;
+      t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+    try { history.replaceState(null, '', '#' + name); } catch (e) {}
+    render();
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { show(t.id.slice(2)); });
+    t.addEventListener('keydown', function (e) {
+      var j = e.key === 'ArrowRight' ? i + 1 : e.key === 'ArrowLeft' ? i - 1 : null;
+      if (j == null) return; j = (j + tabs.length) % tabs.length; tabs[j].focus(); show(tabs[j].id.slice(2));
+    });
+  });
+
+  document.getElementById('theme').addEventListener('click', function () {
+    var r = document.documentElement, n = r.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    r.setAttribute('data-theme', n); try { localStorage.setItem('theme', n); } catch (e) {}
+    render();
+  });
+
+  Chart.defaults.font.family = 'Geist, system-ui, sans-serif';
+  var start = (location.hash || '').slice(1);
+  show(draw[start] ? start : 'overview');
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(render);
+})();
+</script>
+</body>
+</html>

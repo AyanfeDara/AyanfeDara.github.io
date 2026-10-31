@@ -27,5 +27,6 @@ Commit to `main`. GitHub Pages republishes in a minute or two. Releases are tagg
 - **Intro screen**: the orange "Hello." screen plays once per browser session.
 - **Motion**: the headline rises in word by word, the tool strips scroll, numbers count up and sections fade in as you scroll. Each tool's projects slide sideways with arrows, keyboard arrows or a swipe. Rows with more than one project also advance by themselves every 10 seconds; they pause on hover or while off screen, stop once the visitor uses the arrows, and stay still with "reduce motion".
 - **Project loops**: each project chart is a short silent video. Only the card on screen plays; phones get the portrait cut with larger text.
+- **Interactive dashboard**: `dashboards/africa-electricity.html` is a web version of the Power BI report (Chart.js, data in `dashboards/africa-data.js`), linked from the Power BI card.
 - **Accessibility**: if a visitor has turned on "reduce motion", all animation is switched off and the loops show a still image. The site can also be used with the keyboard alone.
 - **Local time**: the Abuja clock updates live.
