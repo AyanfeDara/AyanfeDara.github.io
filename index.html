@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#0B0D12">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Olorunmaiye Peter | Data Analyst">
-<meta property="og:description" content="I turn messy data into decisions people act on. SQL, Python, R and Power BI projects in e-commerce, energy, telecom, retail and aviation.">
+<meta property="og:description" content="I turn messy data into decisions people act on. SQL, Python, R and Power BI projects in e-commerce, energy, telecom, retail, aviation and food prices.">
 <meta property="og:url" content="https://ayanfedara.github.io/">
 <meta property="og:image" content="https://ayanfedara.github.io/images/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -126,104 +126,172 @@
 <section id="work" class="section wrap">
   <div class="section-head reveal">
     <h2 class="section-title"><span class="idx">(01)</span><span>Selected <span class="serif accent-text">work</span></span></h2>
-    <p class="section-note">Each project starts with a real business question and ends with what I would do about the answer.</p>
+    <p class="section-note">Each project starts with a real business question and ends with what I would do about the answer. Grouped by tool: swipe or use the arrows to see more.</p>
   </div>
 
-  <div class="cards">
-    <article class="card card-1">
-      <div class="card-text">
-        <p class="meta"><span class="meta-n">01</span><span aria-hidden="true">—</span><span>SQL · E-commerce · 2026</span></p>
-        <h3 class="card-title">Late orders get <span class="serif">1&#8209;star</span> reviews</h3>
-        <div class="big-stat"><span class="big-num">70%</span><span class="big-label">of orders over a week late got a 1-star review</span></div>
-        <p class="card-body">Using SQL on 99,441 orders from a Brazilian online store, I compared each delivery date with the customer’s review. Late orders were only 6.7% of deliveries but accounted for 37% of all 1-star reviews. The five worst states, all in the North-east, ran 14 to 21% late, against 4.5% in São Paulo.</p>
-        <p class="takeaway"><span>What I’d do</span>Fix carriers and delivery estimates in those five states first, and flag orders that are at risk of running late before the customer notices.</p>
-        <div class="card-links">
-          <a href="reports/olist.html" class="btn btn-outline btn-sm">Read the report <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
-          <a href="https://github.com/AyanfeDara/olist-sales-analysis" class="btn btn-outline btn-sm">View on GitHub <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
+  <!--
+    Projects are grouped by tool. Each group slides left and right when it has more than one project.
+    To add a project: copy one <article class="card ..."> block into the right group's <div class="rail">.
+    The counter and arrows update by themselves. For a new tool (for example Excel), copy a whole
+    <div class="tool-group"> block, change the tool name, and keep the order SQL, Power BI, Python, R, Excel.
+  -->
+  <div class="tool-groups">
+    <div class="tool-group">
+      <div class="tool-head">
+        <h3 class="tool-name">SQL <span class="tool-count">1 project</span></h3>
+        <div class="rail-nav">
+          <button type="button" class="rail-btn" data-dir="-1" aria-label="Previous SQL project"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button>
+          <span class="rail-pos" aria-live="polite">1 / 1</span>
+          <button type="button" class="rail-btn" data-dir="1" aria-label="Next SQL project"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"></path></svg></button>
         </div>
       </div>
-      <figure class="shot" style="--tilt: -2deg">
-        <video class="loop" muted loop playsinline preload="none" width="1280" height="800" poster="media/olist_poster.webp" aria-label="Animation: a SQL query result, then bars showing the share of 1-star reviews rising from 6.4% for orders over a week early to 69.7% for orders over a week late">
-          <source src="media/olist.mp4" type="video/mp4"><source src="media/olist.webm" type="video/webm">
-        </video>
-      </figure>
-    </article>
-
-    <article class="card card-2">
-      <div class="card-text">
-        <p class="meta"><span class="meta-n">02</span><span aria-hidden="true">—</span><span>Power BI · Energy · 2026</span></p>
-        <h3 class="card-title">Africa doubled its electricity supply, but <span class="serif">not per person</span></h3>
-        <div class="big-stat"><span class="big-num">+20%</span><span class="big-label">electricity per person, while total generation grew 119%</span></div>
-        <p class="card-body">I built a three-page Power BI report on 54 African countries from 2000 to 2024. Population grew 83%, so each person’s share only rose from 534 to 639 kWh a year. Of seven large economies, Nigeria has the least electricity per person, and its share from renewables fell from 38% to 25%.</p>
-        <p class="takeaway"><span>What it means</span>Total output is the wrong yardstick. Measured per person, Nigeria comes last of the seven, and Ethiopia has overtaken it.</p>
-        <div class="card-links">
-          <a href="reports/africa.html" class="btn btn-outline btn-sm">Read the report <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
-          <a href="https://github.com/AyanfeDara/africa-electricity-dashboard" class="btn btn-outline btn-sm">View on GitHub <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
+      <div class="rail" tabindex="0" aria-label="SQL projects">
+      <article class="card card-1">
+        <div class="card-text">
+          <p class="meta"><span class="meta-n">01</span><span aria-hidden="true">—</span><span>SQL · E-commerce · 2026</span></p>
+          <h3 class="card-title">Late orders get <span class="serif">1&#8209;star</span> reviews</h3>
+          <div class="big-stat"><span class="big-num">70%</span><span class="big-label">of orders over a week late got a 1-star review</span></div>
+          <p class="card-body">Using SQL on 99,441 orders from a Brazilian online store, I compared each delivery date with the customer’s review. Late orders were only 6.7% of deliveries but accounted for 37% of all 1-star reviews. The five worst states, all in the North-east, ran 14 to 21% late, against 4.5% in São Paulo.</p>
+          <p class="takeaway"><span>What I’d do</span>Fix carriers and delivery estimates in those five states first, and flag orders that are at risk of running late before the customer notices.</p>
+          <div class="card-links">
+            <a href="reports/olist.html" class="btn btn-outline btn-sm">Read the report <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
+            <a href="https://github.com/AyanfeDara/olist-sales-analysis" class="btn btn-outline btn-sm">View on GitHub <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
+          </div>
+        </div>
+        <figure class="shot" style="--tilt: -2deg">
+          <video class="loop" muted loop playsinline preload="none" width="1280" height="800" poster="media/olist_poster.webp" aria-label="Animation: a SQL query result, then bars showing the share of 1-star reviews rising from 6.4% for orders over a week early to 69.7% for orders over a week late">
+            <source src="media/olist.mp4" type="video/mp4"><source src="media/olist.webm" type="video/webm">
+          </video>
+        </figure>
+      </article>
+      </div>
+    </div>
+    <div class="tool-group">
+      <div class="tool-head">
+        <h3 class="tool-name">Power BI <span class="tool-count">1 project</span></h3>
+        <div class="rail-nav">
+          <button type="button" class="rail-btn" data-dir="-1" aria-label="Previous Power BI project"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button>
+          <span class="rail-pos" aria-live="polite">1 / 1</span>
+          <button type="button" class="rail-btn" data-dir="1" aria-label="Next Power BI project"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"></path></svg></button>
         </div>
       </div>
-      <figure class="shot" style="--tilt: 2deg">
-        <video class="loop" muted loop playsinline preload="none" width="1280" height="800" poster="media/energy_poster.webp" aria-label="Animation: electricity per person in seven African countries changes from 2000 to 2024. Nigeria rises from 117 to 161 kWh, the lowest of the seven, and Ethiopia overtakes it">
-          <source src="media/energy.mp4" type="video/mp4"><source src="media/energy.webm" type="video/webm">
-        </video>
-      </figure>
-    </article>
-
-    <article class="card card-3">
-      <div class="card-text">
-        <p class="meta"><span class="meta-n">03</span><span aria-hidden="true">—</span><span>Python · Telecom · 2026</span></p>
-        <h3 class="card-title">Call <span class="serif">one in five</span> customers, reach half of those about to leave</h3>
-        <div class="big-stat"><span class="big-num">50%</span><span class="big-label">of leaving customers reached by calling the riskiest 20%</span></div>
-        <p class="card-body">I studied 7,043 telecom customers in Python. Those on month-to-month plans leave 15 times as often as those on two-year contracts (42.7% against 2.8%). I compared two models and used the simpler one, a logistic regression (score 0.85), to rank who to call first. The riskiest 20% hold half of the customers who leave and 55% of the revenue at risk.</p>
-        <p class="takeaway"><span>What I’d do</span>Score customers every month, offer the riskiest 20% a longer contract, and test the offer on a small group before rolling it out.</p>
-        <div class="card-links">
-          <a href="reports/churn.html" class="btn btn-outline btn-sm">Read the report <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
-          <a href="https://github.com/AyanfeDara/telco-churn-analysis" class="btn btn-outline btn-sm">View on GitHub <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
+      <div class="rail" tabindex="0" aria-label="Power BI projects">
+      <article class="card card-2">
+        <div class="card-text">
+          <p class="meta"><span class="meta-n">02</span><span aria-hidden="true">—</span><span>Power BI · Energy · 2026</span></p>
+          <h3 class="card-title">Africa doubled its electricity supply, but <span class="serif">not per person</span></h3>
+          <div class="big-stat"><span class="big-num">+20%</span><span class="big-label">electricity per person, while total generation grew 119%</span></div>
+          <p class="card-body">I built a three-page Power BI report on 54 African countries from 2000 to 2024. Population grew 83%, so each person’s share only rose from 534 to 639 kWh a year. Of seven large economies, Nigeria has the least electricity per person, and its share from renewables fell from 38% to 25%.</p>
+          <p class="takeaway"><span>What it means</span>Total output is the wrong yardstick. Measured per person, Nigeria comes last of the seven, and Ethiopia has overtaken it.</p>
+          <div class="card-links">
+            <a href="reports/africa.html" class="btn btn-outline btn-sm">Read the report <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
+            <a href="https://github.com/AyanfeDara/africa-electricity-dashboard" class="btn btn-outline btn-sm">View on GitHub <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
+          </div>
+        </div>
+        <figure class="shot" style="--tilt: 2deg">
+          <video class="loop" muted loop playsinline preload="none" width="1280" height="800" poster="media/energy_poster.webp" aria-label="Animation: electricity per person in seven African countries changes from 2000 to 2024. Nigeria rises from 117 to 161 kWh, the lowest of the seven, and Ethiopia overtakes it">
+            <source src="media/energy.mp4" type="video/mp4"><source src="media/energy.webm" type="video/webm">
+          </video>
+        </figure>
+      </article>
+      </div>
+    </div>
+    <div class="tool-group">
+      <div class="tool-head">
+        <h3 class="tool-name">Python <span class="tool-count">1 project</span></h3>
+        <div class="rail-nav">
+          <button type="button" class="rail-btn" data-dir="-1" aria-label="Previous Python project"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button>
+          <span class="rail-pos" aria-live="polite">1 / 1</span>
+          <button type="button" class="rail-btn" data-dir="1" aria-label="Next Python project"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"></path></svg></button>
         </div>
       </div>
-      <figure class="shot" style="--tilt: -1.5deg">
-        <video class="loop" muted loop playsinline preload="none" width="1280" height="800" poster="media/churn_poster.webp" aria-label="Animation: calling the top 10, 20 and 30% of customers ranked by the model reaches 28, 50 and 66% of leavers, against 10, 20 and 30% at random">
-          <source src="media/churn.mp4" type="video/mp4"><source src="media/churn.webm" type="video/webm">
-        </video>
-      </figure>
-    </article>
-
-    <article class="card card-4">
-      <div class="card-text">
-        <p class="meta"><span class="meta-n">04</span><span aria-hidden="true">—</span><span>R · Retail · 2026</span></p>
-        <h3 class="card-title">Forecasting US retail sales <span class="serif">within 3%</span></h3>
-        <div class="big-stat"><span class="big-num">3.2%</span><span class="big-label">average error on 24 months the model had not seen</span></div>
-        <p class="card-body">I forecast monthly sales for five US store types in R, using Census data from 2010 to 2026. Online sales more than doubled since 2019, while clothing fell once inflation is taken into account. I tested three methods on two years they had not seen: exponential smoothing was off by 3.2% on average, against 5.7% for simply repeating last year.</p>
-        <p class="takeaway"><span>What it means</span>Online is forecast to grow 6.7% over the next 12 months and grocery to stay almost flat. Clothing is the hardest to forecast, so it needs the largest stock buffer.</p>
-        <div class="card-links">
-          <a href="https://ayanfedara.github.io/us-retail-forecast/retail_forecast.html" class="btn btn-outline btn-sm">Read the report <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
-          <a href="https://github.com/AyanfeDara/us-retail-forecast" class="btn btn-outline btn-sm">View on GitHub <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
+      <div class="rail" tabindex="0" aria-label="Python projects">
+      <article class="card card-3">
+        <div class="card-text">
+          <p class="meta"><span class="meta-n">03</span><span aria-hidden="true">—</span><span>Python · Telecom · 2026</span></p>
+          <h3 class="card-title">Call <span class="serif">one in five</span> customers, reach half of those about to leave</h3>
+          <div class="big-stat"><span class="big-num">50%</span><span class="big-label">of leaving customers reached by calling the riskiest 20%</span></div>
+          <p class="card-body">I studied 7,043 telecom customers in Python. Those on month-to-month plans leave 15 times as often as those on two-year contracts (42.7% against 2.8%). I compared two models and used the simpler one, a logistic regression (score 0.85), to rank who to call first. The riskiest 20% hold half of the customers who leave and 55% of the revenue at risk.</p>
+          <p class="takeaway"><span>What I’d do</span>Score customers every month, offer the riskiest 20% a longer contract, and test the offer on a small group before rolling it out.</p>
+          <div class="card-links">
+            <a href="reports/churn.html" class="btn btn-outline btn-sm">Read the report <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
+            <a href="https://github.com/AyanfeDara/telco-churn-analysis" class="btn btn-outline btn-sm">View on GitHub <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
+          </div>
+        </div>
+        <figure class="shot" style="--tilt: -1.5deg">
+          <video class="loop" muted loop playsinline preload="none" width="1280" height="800" poster="media/churn_poster.webp" aria-label="Animation: calling the top 10, 20 and 30% of customers ranked by the model reaches 28, 50 and 66% of leavers, against 10, 20 and 30% at random">
+            <source src="media/churn.mp4" type="video/mp4"><source src="media/churn.webm" type="video/webm">
+          </video>
+        </figure>
+      </article>
+      </div>
+    </div>
+    <div class="tool-group">
+      <div class="tool-head">
+        <h3 class="tool-name">R <span class="tool-count">3 projects</span></h3>
+        <div class="rail-nav">
+          <button type="button" class="rail-btn" data-dir="-1" aria-label="Previous R project"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button>
+          <span class="rail-pos" aria-live="polite">1 / 3</span>
+          <button type="button" class="rail-btn" data-dir="1" aria-label="Next R project"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"></path></svg></button>
         </div>
       </div>
-      <figure class="shot" style="--tilt: 1.5deg">
-        <video class="loop" muted loop playsinline preload="none" width="1280" height="800" poster="media/retail_poster.webp" aria-label="Animation: R code fits three forecasting methods, then bars show their average error on 24 unseen months: exponential smoothing 3.2%, same month last year 5.7%, ARIMA 8.1%">
-          <source src="media/retail.mp4" type="video/mp4"><source src="media/retail.webm" type="video/webm">
-        </video>
-      </figure>
-    </article>
-
-    <article class="card card-5">
-      <div class="card-text">
-        <p class="meta"><span class="meta-n">05</span><span aria-hidden="true">—</span><span>R · Aviation · 2026</span></p>
-        <h3 class="card-title">Evening flights leave late <span class="serif">three times as often</span></h3>
-        <div class="big-stat"><span class="big-num">3×</span><span class="big-label">as likely to leave late after 6pm as before 9am</span></div>
-        <p class="card-body">I joined 435,352 flights from New York’s three airports in 2023 to hourly weather at each airport, in R. Rain, poor visibility and strong wind each raised the late rate by 6 to 9 points, but only one flight in eight left in rain. A logistic regression showed time of day matters most: holding airline, airport and weather constant, 10% of flights would leave late if all left before 9am, against 32% after 6pm.</p>
-        <p class="takeaway"><span>What I’d do</span>Build more slack into the evening timetable, where delays carried forward from earlier flights pile up, and plan for bad-weather days separately.</p>
-        <div class="card-links">
-          <a href="https://ayanfedara.github.io/nyc-flight-delays/flight_delays.html" class="btn btn-outline btn-sm">Read the report <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
-          <a href="https://github.com/AyanfeDara/nyc-flight-delays" class="btn btn-outline btn-sm">View on GitHub <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
+      <div class="rail" tabindex="0" aria-label="R projects">
+      <article class="card card-4">
+        <div class="card-text">
+          <p class="meta"><span class="meta-n">04</span><span aria-hidden="true">—</span><span>R · Retail · 2026</span></p>
+          <h3 class="card-title">Forecasting US retail sales <span class="serif">within 3%</span></h3>
+          <div class="big-stat"><span class="big-num">3.2%</span><span class="big-label">average error on 24 months the model had not seen</span></div>
+          <p class="card-body">I forecast monthly sales for five US store types in R, using Census data from 2010 to 2026. Online sales more than doubled since 2019, while clothing fell once inflation is taken into account. I tested three methods on two years they had not seen: exponential smoothing was off by 3.2% on average, against 5.7% for simply repeating last year.</p>
+          <p class="takeaway"><span>What it means</span>Online is forecast to grow 6.7% over the next 12 months and grocery to stay almost flat. Clothing is the hardest to forecast, so it needs the largest stock buffer.</p>
+          <div class="card-links">
+            <a href="https://ayanfedara.github.io/us-retail-forecast/retail_forecast.html" class="btn btn-outline btn-sm">Read the report <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
+            <a href="https://github.com/AyanfeDara/us-retail-forecast" class="btn btn-outline btn-sm">View on GitHub <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
+          </div>
         </div>
+        <figure class="shot" style="--tilt: 1.5deg">
+          <video class="loop" muted loop playsinline preload="none" width="1280" height="800" poster="media/retail_poster.webp" aria-label="Animation: R code fits three forecasting methods, then bars show their average error on 24 unseen months: exponential smoothing 3.2%, same month last year 5.7%, ARIMA 8.1%">
+            <source src="media/retail.mp4" type="video/mp4"><source src="media/retail.webm" type="video/webm">
+          </video>
+        </figure>
+      </article>
+      <article class="card card-5">
+        <div class="card-text">
+          <p class="meta"><span class="meta-n">05</span><span aria-hidden="true">—</span><span>R · Aviation · 2026</span></p>
+          <h3 class="card-title">Evening flights leave late <span class="serif">three times as often</span></h3>
+          <div class="big-stat"><span class="big-num">3×</span><span class="big-label">as likely to leave late after 6pm as before 9am</span></div>
+          <p class="card-body">I joined 435,352 flights from New York’s three airports in 2023 to hourly weather at each airport, in R. Rain, poor visibility and strong wind each raised the late rate by 6 to 9 points, but only one flight in eight left in rain. A logistic regression showed time of day matters most: holding airline, airport and weather constant, 10% of flights would leave late if all left before 9am, against 32% after 6pm.</p>
+          <p class="takeaway"><span>What I’d do</span>Build more slack into the evening timetable, where delays carried forward from earlier flights pile up, and plan for bad-weather days separately.</p>
+          <div class="card-links">
+            <a href="https://ayanfedara.github.io/nyc-flight-delays/flight_delays.html" class="btn btn-outline btn-sm">Read the report <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
+            <a href="https://github.com/AyanfeDara/nyc-flight-delays" class="btn btn-outline btn-sm">View on GitHub <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
+          </div>
+        </div>
+        <figure class="shot" style="--tilt: -1.5deg">
+          <video class="loop" muted loop playsinline preload="none" width="1280" height="800" poster="media/flights_poster.webp" aria-label="Animation: R code fits a logistic regression, then bars show the share of NYC departures leaving 15 or more minutes late by scheduled hour, rising from 8.9% at 6:00 to 32.5% at 19:00">
+            <source src="media/flights.mp4" type="video/mp4"><source src="media/flights.webm" type="video/webm">
+          </video>
+        </figure>
+      </article>
+      <article class="card card-6">
+        <div class="card-text">
+          <p class="meta"><span class="meta-n">06</span><span aria-hidden="true">—</span><span>R · Data cleaning · 2026</span></p>
+          <h3 class="card-title">Food prices overshot the naira, <span class="serif">then fell back</span></h3>
+          <div class="big-stat"><span class="big-num">3.9×</span><span class="big-label">staple food prices at the 2024 peak, against 3.5× for the dollar</span></div>
+          <p class="card-body">I cleaned 88,391 World Food Programme market prices in R: 20 different pack sizes converted to a price per kg, a change in recording method checked for duplicates, the exchange rate derived from the data, and 152 implausible prices flagged. The clean data shows staple prices in North-East Nigeria rose faster than the naira fell after the 2023 float, then fell back: by January 2026 they cost less than half their early-2023 price in dollars.</p>
+          <p class="takeaway"><span>What it means</span>For families earning in naira, staples still cost about twice what they did in early 2023; for aid agencies buying with dollars, food is now cheaper than before the float.</p>
+          <div class="card-links">
+            <a href="https://ayanfedara.github.io/nigeria-food-prices/food_prices.html" class="btn btn-outline btn-sm">Read the report <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
+            <a href="https://github.com/AyanfeDara/nigeria-food-prices" class="btn btn-outline btn-sm">View on GitHub <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a>
+          </div>
+        </div>
+        <figure class="shot" style="--tilt: 1.5deg">
+          <video class="loop" muted loop playsinline preload="none" width="1280" height="800" poster="media/food_poster.webp" aria-label="Animation: R code converts pack sizes to a price per kg, then lines show the staple food price index rising to 394 in September 2024, above the naira per dollar index at 354, and falling to 144 by January 2026">
+            <source src="media/food.mp4" type="video/mp4"><source src="media/food.webm" type="video/webm">
+          </video>
+        </figure>
+      </article>
       </div>
-      <figure class="shot" style="--tilt: -1.5deg">
-        <video class="loop" muted loop playsinline preload="none" width="1280" height="800" poster="media/flights_poster.webp" aria-label="Animation: R code fits a logistic regression, then bars show the share of NYC departures leaving 15 or more minutes late by scheduled hour, rising from 8.9% at 6:00 to 32.5% at 19:00">
-          <source src="media/flights.mp4" type="video/mp4"><source src="media/flights.webm" type="video/webm">
-        </video>
-      </figure>
-    </article>
+    </div>
   </div>
 </section>
 

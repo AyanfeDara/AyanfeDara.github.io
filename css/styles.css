@@ -496,7 +496,7 @@ html:not(.js) .draw { stroke-dashoffset: 0; }
 .section-title { font-size: clamp(2rem, 3.8vw, 3rem); letter-spacing: -.04em; }
 
 /* project cards: one neutral surface, one accent, no tilt, no stacking */
-.card, .card-1, .card-2, .card-3, .card-4, .card-5 {
+.card, .card-1, .card-2, .card-3, .card-4, .card-5, .card-6 {
   position: relative; top: auto;
   background: var(--surface); border: 1px solid var(--line-soft);
   box-shadow: none; border-radius: 24px; padding: 40px; gap: 48px;
@@ -526,7 +526,7 @@ html:not(.js) .draw { stroke-dashoffset: 0; }
 }
 @media (max-width: 640px) {
   .hero { padding: 120px 16px 56px; }
-  .card, .card-1, .card-2, .card-3, .card-4, .card-5 { padding: 24px; }
+  .card, .card-1, .card-2, .card-3, .card-4, .card-5, .card-6 { padding: 24px; }
   .big-num { font-size: 48px; }
 }
 
@@ -547,3 +547,34 @@ html:not(.js) .draw { stroke-dashoffset: 0; }
   mask-image: linear-gradient(to bottom, #000 0%, #000 45%, transparent 100%);
 }
 :root[data-theme="light"] .hero::before { opacity: .14; filter: grayscale(.3); }
+
+/* ---------- projects grouped by tool, each group slides sideways ---------- */
+.tool-groups { display: flex; flex-direction: column; gap: 64px; }
+.tool-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
+.tool-name { display: flex; align-items: baseline; gap: 14px; font-weight: 600; font-size: clamp(1.5rem, 2.6vw, 2rem); letter-spacing: -.035em; }
+.tool-count { font-family: var(--mono); font-size: 13px; font-weight: 400; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
+.rail-nav { display: flex; align-items: center; gap: 10px; }
+.rail-nav[hidden] { display: none; }
+.rail-pos { min-width: 52px; text-align: center; font-family: var(--mono); font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.rail-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px; border-radius: 50%; cursor: pointer;
+  border: 1px solid var(--outline); background: transparent; color: var(--text);
+  transition: border-color .3s, opacity .3s;
+}
+.rail-btn:hover { border-color: var(--text); }
+.rail-btn:disabled { opacity: .3; cursor: default; border-color: var(--outline); }
+.rail {
+  display: flex; gap: 24px; overflow-x: auto; overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none;
+  border-radius: 24px;
+}
+.rail::-webkit-scrollbar { display: none; }
+.rail:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+.rail > .card { flex: 0 0 100%; scroll-snap-align: start; scroll-snap-stop: always; }
+@media (prefers-reduced-motion: reduce) { .rail { scroll-behavior: auto; } }
+@media (max-width: 640px) {
+  .tool-groups { gap: 48px; }
+  .rail { gap: 14px; }
+  .rail-btn { width: 40px; height: 40px; }
+}

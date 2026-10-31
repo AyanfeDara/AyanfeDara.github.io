@@ -116,7 +116,9 @@
       var vh = window.innerHeight, active = null;
       loops.forEach(function (v) {
         var r = v.getBoundingClientRect();
-        if (r.bottom > 0 && r.top < vh * 0.75) active = v;
+        // Cards in a sideways row: only the one showing in its row counts.
+        var vw = window.innerWidth;
+        if (r.bottom > 0 && r.top < vh * 0.75 && r.right > 40 && r.left < vw - 40) active = v;
       });
       loops.forEach(function (v) {
         if (v === active) {
@@ -130,8 +132,68 @@
     var queue = function () { if (!pending) { pending = true; requestAnimationFrame(pickActive); } };
     window.addEventListener('scroll', queue, { passive: true });
     window.addEventListener('resize', queue);
+    document.querySelectorAll('.rail').forEach(function (rail) { rail.addEventListener('scroll', queue, { passive: true }); });
     pickActive();
   }
+
+  /* ---------- project rows: slide sideways with the arrows, show "2 / 3" ---------- */
+  document.querySelectorAll('.tool-group').forEach(function (group) {
+    var rail = group.querySelector('.rail');
+    var nav = group.querySelector('.rail-nav');
+    var count = group.querySelector('.tool-count');
+    if (!rail) return;
+    var cards = rail.querySelectorAll('.card');
+    var n = cards.length;
+    if (count) count.textContent = n + (n === 1 ? ' project' : ' projects');
+    if (!nav) return;
+    if (n < 2) { nav.hidden = true; return; }
+    var prev = nav.querySelector('[data-dir="-1"]');
+    var next = nav.querySelector('[data-dir="1"]');
+    var pos = nav.querySelector('.rail-pos');
+    var current = function () { return Math.round(rail.scrollLeft / Math.max(1, cards[0].offsetWidth + 24)); };
+    var update = function () {
+      var i = Math.min(n - 1, Math.max(0, current()));
+      if (pos) pos.textContent = (i + 1) + ' / ' + n;
+      prev.disabled = i === 0;
+      next.disabled = i === n - 1;
+    };
+    var go = function (dir) {
+      var i = Math.min(n - 1, Math.max(0, current() + dir));
+      rail.scrollTo({ left: cards[i].offsetLeft - cards[0].offsetLeft, behavior: reduceMotion ? 'auto' : 'smooth' });
+    };
+    // Auto-advance: one project every 10 seconds, looping back to the first.
+    // Pauses on hover, focus or touch and while the row is off screen; stops for good
+    // once the visitor uses the arrows; never runs with "reduce motion".
+    var manual = false, hovering = false, onScreen = false, timer = null;
+    var stopAuto = function () { manual = true; group.classList.remove('is-auto'); };
+    var tick = function () {
+      if (manual || hovering || !onScreen || document.hidden) return;
+      var i = current();
+      if (i >= n - 1) rail.scrollTo({ left: 0, behavior: 'smooth' }); else go(1);
+    };
+    if (!reduceMotion) {
+      group.classList.add('is-auto');
+      timer = setInterval(tick, 10000);
+      group.addEventListener('mouseenter', function () { hovering = true; });
+      group.addEventListener('mouseleave', function () { hovering = false; });
+      group.addEventListener('focusin', function () { hovering = true; });
+      group.addEventListener('focusout', function () { hovering = false; });
+      rail.addEventListener('touchstart', stopAuto, { passive: true });
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (es) { onScreen = es[0].isIntersecting; }, { threshold: 0.5 }).observe(rail);
+      } else { onScreen = true; }
+    }
+    prev.addEventListener('click', function () { stopAuto(); go(-1); });
+    next.addEventListener('click', function () { stopAuto(); go(1); });
+    rail.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); stopAuto(); go(1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); stopAuto(); go(-1); }
+    });
+    var t = null;
+    rail.addEventListener('scroll', function () { if (t) cancelAnimationFrame(t); t = requestAnimationFrame(update); }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  });
 
   /* ---------- live Abuja clock ---------- */
   var clocks = document.querySelectorAll('[data-clock]');
