@@ -578,3 +578,35 @@ html:not(.js) .draw { stroke-dashoffset: 0; }
   .rail { gap: 14px; }
   .rail-btn { width: 40px; height: 40px; }
 }
+
+/* compact project cards, so a whole project fits on a laptop screen */
+.rail > .card { padding: 32px 40px; gap: 40px; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); border-radius: 22px; }
+.rail .card-text { gap: 12px; }
+.rail .meta { font-size: 12px; }
+.rail .card-title { font-size: clamp(1.35rem, 1.9vw, 1.7rem); line-height: 1.12; }
+.rail .big-stat { gap: 12px; }
+.rail .big-num { font-size: 44px; }
+.rail .big-label { font-size: 14px; max-width: 240px; }
+.rail .card-body { font-size: 15px; line-height: 1.55; }
+.rail .takeaway { font-size: 14.5px; line-height: 1.45; }
+.rail .takeaway span { font-size: 11px; }
+.rail .card-links { margin-top: 4px; }
+.rail .btn-sm { min-height: 40px; padding: 0 18px; font-size: 14px; }
+.rail .shot { padding: 6px; border-radius: 12px; }
+.tool-group { scroll-margin-top: 96px; }
+.tool-head { margin-bottom: 14px; }
+@media (max-width: 900px) {
+  .rail > .card { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .rail .card-title { font-size: 1.5rem; }
+}
+@media (max-width: 640px) {
+  .rail > .card { padding: 22px; }
+  .rail .big-num { font-size: 40px; }
+}
+.rail > .card { padding: 26px 36px; gap: 36px; }
+.rail .card-text { gap: 10px; }
+.rail .big-num { font-size: 40px; }
+.rail .card-body { font-size: 14.5px; line-height: 1.5; }
+.rail .takeaway { font-size: 14px; }
+.tool-head { margin-bottom: 10px; }
+.tool-name { font-size: clamp(1.35rem, 2.2vw, 1.75rem); }
