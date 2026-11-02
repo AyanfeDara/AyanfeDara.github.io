@@ -15,7 +15,7 @@ favicon.svg       "OP" tab icon
 ## To do
 
 1. **LinkedIn**: the button is commented out in `index.html` (contact section). Replace `[handle]` with the real profile handle and remove the comment markers.
-2. **Adding a project**: projects are grouped by tool (SQL, Power BI, Python, R). Copy one `<article class="card ...">` block into the right group's `<div class="rail">` in the Work section and edit it; the project count, arrows and "2 / 3" counter update by themselves. For a new tool such as Excel, copy a whole `<div class="tool-group">` block and change the tool name. Each project's chart loop goes in `media/` as `<name>.mp4`, `<name>.webm` and `<name>_poster.webp`, plus `_m` portrait versions for phones.
+2. **Adding a project**: projects are grouped by tool (SQL, Power BI, Python, R, Excel). Copy one `<article class="card ...">` block into the right group's `<div class="rail">` in the Work section and edit it; the project count, arrows and "2 / 3" counter update by themselves. For a new tool such as Tableau, copy a whole `<div class="tool-group">` block and change the tool name. Each project's chart loop goes in `media/` as `<name>.mp4`, `<name>.webm` and `<name>_poster.webp`, plus `_m` portrait versions for phones.
 
 ## Deploy
 
